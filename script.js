@@ -9,8 +9,7 @@ var hardCelebritiesURL = "https://opentdb.com/api.php?amount=1&category=26&diffi
 var category = "";
 var difficulty = "";
 var possiblePoints = "";
-
-
+var gameTime = 60;
 
 function generateQuestion(event) {
    event.preventDefault();
@@ -146,13 +145,24 @@ function generateQuestion(event) {
    )
 }
 
+function timerStart() {
+   // event.preventDefault();
+   setTimeout(function() {
+      gameTime--;
+      console.log(gameTime);
+   }, 1)
+}
+
+timerStart();
+
 
 $(".game-category").on("click", generateQuestion)
+$("#start-button").on("click", timerStart)
 
 
 
-ajaxCall(easyMusicURL);
-ajaxCall(mediumCelebritiesURL)
+// ajaxCall(easyMusicURL);
+// ajaxCall(mediumCelebritiesURL)
 
 
 
@@ -167,10 +177,11 @@ ajaxCall(mediumCelebritiesURL)
 // then you get a 'here's your score' screen
 // Score is at the top
 
-// we need a funciton to start the game that will be triggered by an on-click event - phill
+// we need a funciton to start the game that will be triggered by an on-click event - colin
 // we need to write function that takes in the user's selection for an answer and compares it to the correct answer - phill
 // we need a timer that counts down for 60 seconds (can change that depending on gameplay) - colin
 // we need a user score that increases and decreases depending on the user's response -phill
 // a way to determine how many points each question is worth - if this.attr("data-game", "easy-music") set a variable possiblePoints = 1, etc., etc., lots of if else - colin
+// develop the giphy ajax - phill
 
 
