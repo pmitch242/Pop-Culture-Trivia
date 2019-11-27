@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pop Culture Trivia!</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"> -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="bulmaswatch.min.css">
     <link rel="stylesheet" href="style.css">
@@ -25,12 +25,13 @@
               </div>
               <div id="navbarMenuHero1" class="navbar-menu">
                 <div class="navbar-end">
-                  <a class="navbar-item is-active">
+                  <a class="navbar-item" a href="index.html" >
                     Home
                   </a>
-                  <a class="navbar-item">
+                  <a class="navbar-item" a href="hscore.html">
                     High Scores
                   </a>
+                </a>
                   <a class="navbar-item">
                     New Game
                   </a>
@@ -72,39 +73,45 @@
             <h1 class="title">
             Pop Culture Trivia
           </h1>
-             <h2 class="subtitle ">
+             <h2 class="button is-info is-rounded">
             Player 1
           </h2>
-          <h2 class="subtitle is level-item">
+          <h2 class="button is-primary is-rounded">
               Player 2
             </h2>
-          <div class="game">
-          <div class="buttons">
-              <h2 class="title is-3"> Film </h2>
-              
-              <a class="button is-success is-large" id="f1"> 100 </a>
-              <a class="button is-primary is-large" id="m1"> 300 </a>
-              <a class="button is-danger is-large" id="A1"> 500 </a>
-            </div>
+           <hr>
+           <br>
+           <!-- <div id="ex1" class="modal">
+              <p>Thanks for clicking. That felt good.</p>
+              <a href="#" rel="modal:close">Close</a>
+            </div>  -->
+          <div id="game" class="center-align">
+              <div class="buttons">
+                  <h2 class="title is-3"> Celebs </h2>
+                  
+                  <a class="button is-success is-large " data-game=“easy-celebs”> 100 </a>
+                  <a class="button is-primary is-large" data-game=“medium-celebs”> 300 </a>
+                  <a class="button is-danger is-large" data-game=“hard-celebs”> 500 </a>
+                </div>
             <div class="buttons">
-                <h2 class="title is-3"> Telv </h2>
+                <h2 class="title is-3"> Film </h2>
                 
-                <a class="button is-success is-large" id="f1"> 100 </a>
-                <a class="button is-primary is-large" id="m1"> 300 </a>
-                <a class="button is-danger is-large" id="A1"> 500 </a>
+                <a class="button is-success is-large" data-game=“easy-film”> 100 </a>
+                <a class="button is-primary is-large" data-game=“medium-film”> 300 </a>
+                <a class="button is-danger is-large" data-game=“hard-film”> 500 </a>
               </div>
               <div class="buttons">
                   <h2 class="title is-3"> Musi </h2>
                   
-                  <a class="button is-success is-large" id="f1"> 100 </a>
-                  <a class="button is-primary is-large" id="m1"> 300 </a>
-                  <a class="button is-danger is-large" id="A1"> 500 </a>
+                  <a class="button is-success is-large" data-game="easy-music"> 100 </a>
+                  <a class="button is-primary is-large" data-game="medium-music"> 300 </a>
+                  <a class="button is-danger is-large" data-game="hard-music"> 500 </a>
                 </div>
           </div>
         </div>
       </div>
         <!-- Hero footer: will stick at the bottom -->
-        <!-- <div class="hero-foot">
+         <!-- <div class="hero-foot">
           <nav class="tabs">
             <div class="container">
               <ul>
