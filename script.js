@@ -13,6 +13,7 @@ var gameTime = 60;
 
 function generateQuestion(event) {
    event.preventDefault();
+   console.log(this)
 
    if (this.attr("data-game", "easy-music")) {
       category = "12";
