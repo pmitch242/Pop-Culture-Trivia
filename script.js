@@ -167,10 +167,10 @@ ajaxCall(mediumCelebritiesURL)
 // then you get a 'here's your score' screen
 // Score is at the top
 
-// we need a funciton to start the game that will be triggered by an on-click event
-// we need to write function that takes in the user's selection for an answer and compares it to the correct answer
-// we need a timer that counts down for 60 seconds (can change that depending on gameplay)
-// we need a user score that increases and decreases depending on the user's response
-// a way to determine how many points each question is worth - if this.attr("data-game", "easy-music") set a variable possiblePoints = 1, etc., etc., lots of if else 
+// we need a funciton to start the game that will be triggered by an on-click event - phill
+// we need to write function that takes in the user's selection for an answer and compares it to the correct answer - phill
+// we need a timer that counts down for 60 seconds (can change that depending on gameplay) - colin
+// we need a user score that increases and decreases depending on the user's response -phill
+// a way to determine how many points each question is worth - if this.attr("data-game", "easy-music") set a variable possiblePoints = 1, etc., etc., lots of if else - colin
 
 
