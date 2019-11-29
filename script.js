@@ -13,81 +13,86 @@ var gameTime = 60;
 
 function generateQuestion(event) {
    event.preventDefault();
-   console.log(this)
 
-   if (this.attr("data-game", "easy-music")) {
+   var thisButton = $(this);
+
+
+   if (thisButton.attr("data-game", "easy-music")) {
       category = "12";
       difficulty = "easy";
       possiblePoints = 100;
-   } else if (this.attr("data-game", "medium-music")) {
+   } else if (thisButton.attr("data-game", "medium-music")) {
       category = "12";
-      difficult = "medium";
+      difficulty = "medium";
       possiblePoints = 300;
-   } else if (this.attr("data-game", "hard-music")) {
+   } else if (thisButton.attr("data-game", "hard-music")) {
       category = "12";
-      difficult = "hard";
+      difficulty = "hard";
       possiblePoints = 500;
-   } else if (this.attr("data-game", "easy-film")) {
+   } else if (thisButton.attr("data-game", "easy-film")) {
       category = "11";
       difficulty = "easy";
       possiblePoints = 100;
-   } else if (this.attr("data-game", "medium-film")) {
+   } else if (thisButton.attr("data-game", "medium-film")) {
       category = "11";
-      difficult = "medium";
+      difficulty = "medium";
       possiblePoints = 300;
-   } else if (this.attr("data-game", "hard-film")) {
+   } else if (thisButton.attr("data-game", "hard-film")) {
       category = "11";
-      difficult = "hard";
+      difficulty = "hard";
       possiblePoints = 500;
-   } else if (this.attr("data-game", "easy-celebs")) {
+   } else if (thisButton.attr("data-game", "easy-celebs")) {
       category = "26";
       difficulty = "easy";
       possiblePoints = 100;
-   } else if (this.attr("data-game", "medium-celebs")) {
+   } else if (thisButton.attr("data-game", "medium-celebs")) {
       category = "26";
-      difficult = "medium";
+      difficulty = "medium";
       possiblePoints = 300;
-   } else if (this.attr("data-game", "hard-celebs")) {
+   } else if (thisButton.attr("data-game", "hard-celebs")) {
       category = "26";
-      difficult = "hard";
+      difficulty = "hard";
       possiblePoints = 500;
-   } else if (this.attr("data-game", "easy-tv")) {
+   } else if (thisButton.attr("data-game", "easy-tv")) {
       category = "14";
       difficulty = "easy";
       possiblePoints = 100;
-   } else if (this.attr("data-game", "medium-tv")) {
+   } else if (thisButton.attr("data-game", "medium-tv")) {
       category = "14";
-      difficult = "medium";
+      difficulty = "medium";
       possiblePoints = 300;
-   } else if (this.attr("data-game", "hard-tv")) {
+   } else if (thisButton.attr("data-game", "hard-tv")) {
       category = "14";
-      difficult = "hard";
+      difficulty = "hard";
       possiblePoints = 500;
-   } else if (this.attr("data-game", "easy-cartoon")) {
+   } else if (thisButton.attr("data-game", "easy-cartoon")) {
       category = "32";
       difficulty = "easy";
       possiblePoints = 100;
-   } else if (this.attr("data-game", "medium-cartoon")) {
+   } else if (thisButton.attr("data-game", "medium-cartoon")) {
       category = "32";
-      difficult = "medium";
+      difficulty = "medium";
       possiblePoints = 300;
-   } else if (this.attr("data-game", "hard-cartoon")) {
+   } else if (thisButton.attr("data-game", "hard-cartoon")) {
       category = "32";
-      difficult = "hard";
+      difficulty = "hard";
       possiblePoints = 500;
-   } else if (this.attr("data-game", "easy-video-game")) {
+   } else if (thisButton.attr("data-game", "easy-video-game")) {
       category = "10";
       difficulty = "easy";
       possiblePoints = 100;
-   } else if (this.attr("data-game", "medium-video-game")) {
+   } else if (thisButton.attr("data-game", "medium-video-game")) {
       category = "10";
-      difficult = "medium";
+      difficulty = "medium";
       possiblePoints = 300;
    } else {
       category = "10";
-      difficult = "hard";
+      difficulty = "hard";
       possiblePoints = 500;
    }
+
+   console.log(category);
+   console.log(difficulty);
 
    var queryURL = "https://opentdb.com/api.php?amount=1&category=" + category + "&difficulty=" + difficulty + "&type=multiple";
 
