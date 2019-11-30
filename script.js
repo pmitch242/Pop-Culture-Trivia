@@ -20,14 +20,40 @@ var answerBtn2 = $("#answer-2")
 var answerBtn3 = $("#answer-3")
 var answerBtn4 = $("#answer-4")
 
+// starting Oage function
 function startingPage() {
-   // startPageDiv.css("display", "block");
+   // =====Variables=====
    var startButton = $("#start-button")
 
    startButton.click(function (element) {
       element.preventDefault();
-      startPageDiv.css("display", "none");
-      startTimer();
+
+      // =====Varibles=====
+      var userName = $("#user-name").val();
+      console.log(userName);
+
+      // Prevents user from leaving input blank
+      if (userName.trim() === "") {
+         var notificationDiv = $("<div>");
+         notificationDiv.attr("class", "notification");
+         notificationDiv.text("Please enter a name, do not leave blank!");
+
+         var exitButton = $("<button>");
+         exitButton.attr("class", "delete");
+
+         notificationDiv.append(exitButton);
+         startPageDiv.append(notificationDiv);
+
+         exitButton.click(function(){
+            notificationDiv.css("display", "none");
+         })
+      } else {
+         startPageDiv.css("display", "none");
+         //start timer 
+         startTimer();
+      }
+
+
    });
 
 }
@@ -194,10 +220,6 @@ function generateQuestion(event) {
             }
 
             thisButton.css("display", "none");
-            // thisButton.attr("class", "button is-large");
-            // thisButton.css("cursor", "not-allowed");
-            // thisButton.attr("disabled");
-            // thisButton.attr("type", "button");
             gameSectionDiv.css("display", "block");
             questionAnswerDiv.css("display", "none");
             possiblePoints = 0;
@@ -236,11 +258,11 @@ function startTimer() {
             }).then(function (giphyData) {
                console.log(giphyData);
 
+               // create elements to append giphy to
                var giphyDiv = $("#giphy-div");
                var giphy = $("<img>");
-
+               // pick a giphy at random from the giphyData array
                giphy.attr("src", giphyData.data[Math.floor(Math.random() * 25)].images.fixed_height.url);
-
                giphyDiv.append(giphy);
 
             });
@@ -254,11 +276,11 @@ function startTimer() {
             }).then(function (giphyData) {
                console.log(giphyData);
 
+               // create elements to append giphy to
                var giphyDiv = $("#giphy-div");
                var giphy = $("<img>");
-
+               // pick a giphy at random from the giphyData array
                giphy.attr("src", giphyData.data[Math.floor(Math.random() * 25)].images.fixed_height.url);
-
                giphyDiv.append(giphy);
             });
          }
@@ -271,6 +293,7 @@ function startTimer() {
 //    timerInterval;
 // }
 
+// start game 
 startingPage();
 
 console.log(timerSpan);
@@ -297,7 +320,7 @@ $(".game-category").on("click", generateQuestion);
 // we need a timer that counts down for 60 seconds (can change that depending on gameplay) - colin, done
 // we need a user score that increases and decreases depending on the user's response -phill, done
 // a way to determine how many points each question is worth - if this.attr("data-game", "easy-music") set a variable possiblePoints = 1, etc., etc., lots of if else - colin, done
-// develop the giphy ajax - phill
+// develop the giphy ajax - phill, done
 // Store highscores - phill
 
 
