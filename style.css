@@ -76,9 +76,17 @@ h2 {
     margin-right: 10px;
 }
 
-
-
 #start-button{
 float: right;
 margin-right: 20px;
+}
+
+.game-over {
+    font-size: 2.25em;
+
+}
+
+.user-score-final {
+    font-size: 1.75em;
+    margin-bottom: 10px;
 }
