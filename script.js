@@ -3,12 +3,13 @@ var category = "";
 var difficulty = "";
 var possiblePoints = 0;
 var userScore = 0;
-var gameTime = 60;
+var gameTime = 10;
 var correctAnswer = "";
 
 // creating empty array
 var namePull = [];
 var scorePull = [];
+var datePull = [];
 
 // selecting html elements
 var startPageDiv = $("#start-page")
@@ -34,13 +35,12 @@ function highScorePage() {
    // store localStorage into arrays
 
    nameDisplay = localStorage.getItem("name");
-   console.log(nameDisplay);
    scoreDisplay = localStorage.getItem("score");
+   dateDisplay = localStorage.getItem("date");
 
    nameDisplay = JSON.parse(nameDisplay);
    scoreDisplay = JSON.parse(scoreDisplay);
-   console.log("These names were in localStorage: " + nameDisplay);
-   console.log("These scores were in localStorage: " + nameDisplay);
+   dateDisplay = JSON.parse(dateDisplay);
 
    if (nameDisplay != null) {
       for(var i=0; i<nameDisplay.length; i++){
@@ -57,6 +57,9 @@ function highScorePage() {
 
    scoreColumn.text(scoreDisplay[i]);
    row.append(scoreColumn);
+
+   dateColumn.text(dateDisplay[i]);
+   row.append(dateColumn);
 
    scoreTBody.append(row);
 
@@ -297,6 +300,12 @@ function startTimer() {
          scorePull = JSON.parse(localStorage.getItem("score") || "[]");
          scorePull.push(userScore);
          localStorage.setItem("score", JSON.stringify(scorePull));
+
+         // store date and time in localStorage
+         var currentDate = moment().format('L LT');
+         datePull = JSON.parse(localStorage.getItem("date") || "[]");
+         datePull.push(currentDate);
+         localStorage.setItem("date", JSON.stringify(datePull));
 
          gameSectionDiv.css("display", "none");
          questionAnswerDiv.css("display", "none");
