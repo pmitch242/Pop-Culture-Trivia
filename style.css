@@ -1,11 +1,14 @@
-.columns {
-    display: flex;
+.tahd {
+    /* display: flex;
     display: -webkit-flex;
     flex-direction: row;
-    -webkit-flex-direction: row;
-    width: 100%;
+    -webkit-flex-direction: row; */
+    /* width: 100%;
     padding-left: 60px;
-    padding-right: 60px;
+    padding-right: 60px; */
+    -ms-grid-row-align: center;
+    grid-row-gap: 30px;
+    
     
 }
 
@@ -18,5 +21,13 @@
 .button {
     order: 3px;
     flex: auto;
+    row-gap: 20px;
     align-self: baseline; 
-}  
+}
+
+#scores {
+    order: 3px;
+    flex: auto;
+    row-gap: 20px;
+    align-self: baseline;
+}
