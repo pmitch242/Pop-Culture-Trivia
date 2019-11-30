@@ -256,10 +256,10 @@ function generateQuestion(event) {
 
          // adding values to HTML elements
          questionDiv.html(question)
-         answerBtn1.text(possibleAnswers[0]);
-         answerBtn2.text(possibleAnswers[1]);
-         answerBtn3.text(possibleAnswers[2]);
-         answerBtn4.text(possibleAnswers[3]);
+         answerBtn1.html(possibleAnswers[0]);
+         answerBtn2.html(possibleAnswers[1]);
+         answerBtn3.html(possibleAnswers[2]);
+         answerBtn4.html(possibleAnswers[3]);
 
          gameSectionDiv.css("display", "none");
          questionAnswerDiv.css("display", "block");
