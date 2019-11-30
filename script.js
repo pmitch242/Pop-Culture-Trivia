@@ -6,7 +6,13 @@ var userScore = 0;
 var gameTime = 60;
 var correctAnswer = "";
 
+// creating empty array
+var namePull = [];
+var scorePull = [];
+var datePull = [];
+
 // selecting html elements
+var startPageDiv = $("#start-page")
 var timerSpan = $("#timerValue")
 var userScoreDiv = $("#user-score-div")
 var gameSectionDiv = $("#game-section")
@@ -18,6 +24,97 @@ var answerBtn1 = $("#answer-1")
 var answerBtn2 = $("#answer-2")
 var answerBtn3 = $("#answer-3")
 var answerBtn4 = $("#answer-4")
+
+function highScorePage() {
+   // <tr>
+   //    <td> Three </td>
+   //    <td> Four </td>
+   //    <td> Five </td>
+   // </tr>
+
+   // store localStorage into arrays
+
+   nameDisplay = localStorage.getItem("name");
+   scoreDisplay = localStorage.getItem("score");
+   dateDisplay = localStorage.getItem("date");
+
+   nameDisplay = JSON.parse(nameDisplay);
+   scoreDisplay = JSON.parse(scoreDisplay);
+   dateDisplay = JSON.parse(dateDisplay);
+
+   if (nameDisplay != null) {
+      for(var i=0; i<nameDisplay.length; i++){
+
+   // =====Varibles=====
+   var scoreTBody = $(".scores-tbody")
+   var row = $("<tr>");
+   var nameColumn = $("<td>");
+   var scoreColumn = $("<td>");
+   var dateColumn = $("<td>");
+
+   nameColumn.text(nameDisplay[i]);
+   row.append(nameColumn);
+
+   scoreColumn.text(scoreDisplay[i]);
+   row.append(scoreColumn);
+
+   dateColumn.text(dateDisplay[i]);
+   row.append(dateColumn);
+
+   scoreTBody.append(row);
+
+      }
+   }
+}
+
+// starting Oage function
+function startingPage() {
+   // =====Variables=====
+   var startButton = $("#start-button")
+
+   startButton.click(function (element) {
+      element.preventDefault();
+
+      // =====Varibles=====
+      var userName = $("#user-name").val();
+      console.log(userName);
+
+      // Prevents user from leaving input blank
+      if (userName.trim() === "") {
+         var notificationDiv = $("<div>");
+         notificationDiv.attr("class", "notification");
+         notificationDiv.text("Please enter a name, do not leave blank!");
+
+         var exitButton = $("<button>");
+         exitButton.attr("class", "delete");
+
+         notificationDiv.append(exitButton);
+         startPageDiv.append(notificationDiv);
+
+         exitButton.click(function () {
+            notificationDiv.css("display", "none");
+         })
+         // start game 
+      } else {
+         startPageDiv.css("display", "none");
+
+         //start timer 
+         startTimer();
+
+         // store user name in varible
+         var nameHeader = $("#name-header");
+         nameHeader.text("Good Luck " + userName + "!");
+
+         // store user name in localStorage
+         namePull = JSON.parse(localStorage.getItem("name") || "[]");
+         namePull.push(userName);
+         localStorage.setItem("name", JSON.stringify(namePull));
+      }
+
+
+   });
+
+}
 
 // setting intitial value of timerSpan to gameTime
 timerSpan.text("Timer: " + gameTime)
@@ -107,12 +204,12 @@ function generateQuestion(event) {
          difficulty = "hard";
          possiblePoints = 500;
          break;
-      case "easy-video-game":
+      case "easy-books":
          category = "10";
          difficulty = "easy";
          possiblePoints = 100;
          break;
-      case "medium-video-game":
+      case "medium-books":
          category = "10";
          difficulty = "medium";
          possiblePoints = 300;
@@ -180,49 +277,97 @@ function generateQuestion(event) {
                userScoreDiv.text(userScore)
             }
 
-            thisButton.css("display", "none")
-            gameSectionDiv.css("display", "flex");
+            thisButton.css("display", "none");
+            gameSectionDiv.css("display", "block");
             questionAnswerDiv.css("display", "none");
             possiblePoints = 0;
          })
-
-
-         
-
       }
    )
 }
+function startTimer() {
+   var timerInterval = setInterval(function () {
+      gameTime--;
+      timerSpan.text("Timer: " + gameTime);
 
-var timerInterval = setInterval(function () {
-   gameTime--;
-   timerSpan.text("Timer: " + gameTime);
+      // this is where we set the end of the game
+      if (gameTime === 0) {
+         clearInterval(timerInterval)
 
-   // this is where we set the end of the game
-   if (gameTime === 0) {
-      clearInterval(timerInterval)
+         userScoreFinalDiv.text("Your score: " + userScore)
 
-      userScoreFinalDiv.text("Your score: " + userScore)
+         // store user score in localStorage
+         scorePull = JSON.parse(localStorage.getItem("score") || "[]");
+         scorePull.push(userScore);
+         localStorage.setItem("score", JSON.stringify(scorePull));
 
-      gameSectionDiv.css("display", "none");
-      questionAnswerDiv.css("display", "none");
-      gameOverDiv.css("display", "block")
+         // store date and time in localStorage
+         var currentDate = moment().format('L LT');
+         datePull = JSON.parse(localStorage.getItem("date") || "[]");
+         datePull.push(currentDate);
+         localStorage.setItem("date", JSON.stringify(datePull));
 
+         gameSectionDiv.css("display", "none");
+         questionAnswerDiv.css("display", "none");
+         gameOverDiv.css("display", "block")
 
+         // =====Varibles=====
+         var winGiphyURL = "https://api.giphy.com/v1/gifs/search?api_key=u9OvLuwupZYRbeoXLfTbguCAA1Z6E3Lk&q=win&limit=25&offset=0&rating=PG-13&lang=en";
+         var loseGiphyURL = "https://api.giphy.com/v1/gifs/search?api_key=u9OvLuwupZYRbeoXLfTbguCAA1Z6E3Lk&q=lose&limit=25&offset=0&rating=PG-13&lang=en";
 
-   }
+         if (userScore > 0) {
+            // Giphy Ajax call
+            $.ajax({
+               url: winGiphyURL,
+               method: "GET"
+            }).then(function (giphyData) {
+               console.log(giphyData);
 
-}, 1000)
+               // create elements to append giphy to
+               var giphyDiv = $("#giphy-div");
+               var giphy = $("<img>");
+               // pick a giphy at random from the giphyData array
+               giphy.attr("src", giphyData.data[Math.floor(Math.random() * 25)].images.fixed_height.url);
+               giphyDiv.append(giphy);
 
+            });
+         }
 
-function timerStart() {
-   timerInterval;
+         else {
+            // Giphy Ajax call
+            $.ajax({
+               url: loseGiphyURL,
+               method: "GET"
+            }).then(function (giphyData) {
+               console.log(giphyData);
+
+               // create elements to append giphy to
+               var giphyDiv = $("#giphy-div");
+               var giphy = $("<img>");
+               // pick a giphy at random from the giphyData array
+               giphy.attr("src", giphyData.data[Math.floor(Math.random() * 25)].images.fixed_height.url);
+               giphyDiv.append(giphy);
+            });
+         }
+      }
+
+   }, 1000)
 }
 
-timerStart();
+// function timerStart() {
+//    timerInterval;
+// }
+
+// highscore page
+highScorePage();
+
+// start game 
+startingPage();
+
 console.log(timerSpan);
 
-$(".game-category").on("click", generateQuestion)
-$("#start-button").on("click", timerStart)
+$(".game-category").on("click", generateQuestion);
+// $("#start-button").on("click", startTimer);
 
 // ajaxCall(easyMusicURL);
 // ajaxCall(mediumCelebritiesURL)
@@ -239,10 +384,11 @@ $("#start-button").on("click", timerStart)
 // Score is at the top
 
 // we need a funciton to start the game that will be triggered by an on-click event - colin, done
-// we need to write function that takes in the user's selection for an answer and compares it to the correct answer - phill
+// we need to write function that takes in the user's selection for an answer and compares it to the correct answer - phill, done
 // we need a timer that counts down for 60 seconds (can change that depending on gameplay) - colin, done
-// we need a user score that increases and decreases depending on the user's response -phill
+// we need a user score that increases and decreases depending on the user's response -phill, done
 // a way to determine how many points each question is worth - if this.attr("data-game", "easy-music") set a variable possiblePoints = 1, etc., etc., lots of if else - colin, done
-// develop the giphy ajax - phill
+// develop the giphy ajax - phill, done
+// Store highscores - phill
 
 
