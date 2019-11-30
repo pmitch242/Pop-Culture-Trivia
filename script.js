@@ -208,35 +208,43 @@ var timerInterval = setInterval(function () {
       gameOverDiv.css("display", "block")
       
       // =====Varibles=====
-      var winGiphyURL = "https://api.giphy.com/v1/gifs/search?api_key=u9OvLuwupZYRbeoXLfTbguCAA1Z6E3Lk&q=win&limit=1&offset=0&rating=PG-13&lang=en";
-      var loseGiphyURL = "https://api.giphy.com/v1/gifs/search?api_key=u9OvLuwupZYRbeoXLfTbguCAA1Z6E3Lk&q=lose&limit=1&offset=0&rating=PG-13&lang=en";
+      var winGiphyURL = "https://api.giphy.com/v1/gifs/search?api_key=u9OvLuwupZYRbeoXLfTbguCAA1Z6E3Lk&q=win&limit=25&offset=0&rating=PG-13&lang=en";
+      var loseGiphyURL = "https://api.giphy.com/v1/gifs/search?api_key=u9OvLuwupZYRbeoXLfTbguCAA1Z6E3Lk&q=lose&limit=25&offset=0&rating=PG-13&lang=en";
       
       if (userScore > 0){
+         // Giphy Ajax call
          $.ajax({
             url: winGiphyURL,
             method: "GET"
          }).then(function(giphyData){
             console.log(giphyData);
             
-         //    var giphyDiv = $("<div>");
-         //    var giphy = $("<img>");
+            var giphyDiv = $("#giphy-div");
+            var giphy = $("<img>");
 
-         //    giphy.attr("scr", giphyData.data[0].images.fixed_height.url);
+            giphy.attr("src", giphyData.data[Math.floor(Math.random()*25)].images.fixed_height.url);
 
-         // });
+            giphyDiv.append(giphy);
+
+         });
       }
 
       else{
+         // Giphy Ajax call
          $.ajax({
             url: loseGiphyURL,
             method: "GET"
          }).then(function(giphyData){
             console.log(giphyData);
+
+            var giphyDiv = $("#giphy-div");
+            var giphy = $("<img>");
+
+            giphy.attr("src", giphyData.data[Math.floor(Math.random()*25)].images.fixed_height.url);
+
+            giphyDiv.append(giphy);
          });
       }
-
-      // Giphy Ajax call
-
    }
 
 }, 1000)
