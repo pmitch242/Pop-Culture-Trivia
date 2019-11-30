@@ -3,7 +3,7 @@ var category = "";
 var difficulty = "";
 var possiblePoints = 0;
 var userScore = 0;
-var gameTime = 60;
+var gameTime = 5;
 var correctAnswer = "";
 
 // creating empty array
