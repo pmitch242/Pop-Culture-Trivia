@@ -61,7 +61,7 @@ function startingPage() {
          // store user name in varible
          var nameHeader = $("#name-header");
          nameHeader.text("Good Luck " + userName + "!");
-         
+
          // store user name in localStorage
          namePull = JSON.parse(localStorage.getItem("name") || "[]");
          namePull.push(userName);
@@ -161,12 +161,12 @@ function generateQuestion(event) {
          difficulty = "hard";
          possiblePoints = 500;
          break;
-      case "easy-video-game":
+      case "easy-books":
          category = "10";
          difficulty = "easy";
          possiblePoints = 100;
          break;
-      case "medium-video-game":
+      case "medium-books":
          category = "10";
          difficulty = "medium";
          possiblePoints = 300;
@@ -239,10 +239,6 @@ function generateQuestion(event) {
             questionAnswerDiv.css("display", "none");
             possiblePoints = 0;
          })
-
-
-
-
       }
    )
 }
@@ -256,6 +252,11 @@ function startTimer() {
          clearInterval(timerInterval)
 
          userScoreFinalDiv.text("Your score: " + userScore)
+
+         // store user name in localStorage
+         scorePull = JSON.parse(localStorage.getItem("score") || "[]");
+         scorePull.push(userScore);
+         localStorage.setItem("score", JSON.stringify(scorePull));
 
          gameSectionDiv.css("display", "none");
          questionAnswerDiv.css("display", "none");
