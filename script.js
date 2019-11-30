@@ -3,11 +3,11 @@ var category = "";
 var difficulty = "";
 var possiblePoints = 0;
 var userScore = 0;
-var gameTime = 10000;
+var gameTime = 60;
 var correctAnswer = "";
 
 // selecting html elements
-var startPageDiv = $("<#start-page>")
+var startPageDiv = $("#start-page")
 var timerSpan = $("#timerValue")
 var userScoreDiv = $("#user-score-div")
 var gameSectionDiv = $("#game-section")
@@ -20,11 +20,15 @@ var answerBtn2 = $("#answer-2")
 var answerBtn3 = $("#answer-3")
 var answerBtn4 = $("#answer-4")
 
-function startingPage(){
-   startPageDiv.css("display", "block");
-   var startTitleH1 = $("<h1>");
-   var instructionsDiv = $("<div>");
-   var playerDIv = $("<div>");
+function startingPage() {
+   // startPageDiv.css("display", "block");
+   var startButton = $("#start-button")
+
+   startButton.click(function (element) {
+      element.preventDefault();
+      startPageDiv.css("display", "none");
+      startTimer();
+   });
 
 }
 
@@ -200,76 +204,75 @@ function generateQuestion(event) {
          })
 
 
-         
+
 
       }
    )
 }
+function startTimer() {
+   var timerInterval = setInterval(function () {
+      gameTime--;
+      timerSpan.text("Timer: " + gameTime);
 
-var timerInterval = setInterval(function () {
-   gameTime--;
-   timerSpan.text("Timer: " + gameTime);
+      // this is where we set the end of the game
+      if (gameTime === 0) {
+         clearInterval(timerInterval)
 
-   // this is where we set the end of the game
-   if (gameTime === 0) {
-      clearInterval(timerInterval)
+         userScoreFinalDiv.text("Your score: " + userScore)
 
-      userScoreFinalDiv.text("Your score: " + userScore)
+         gameSectionDiv.css("display", "none");
+         questionAnswerDiv.css("display", "none");
+         gameOverDiv.css("display", "block")
 
-      gameSectionDiv.css("display", "none");
-      questionAnswerDiv.css("display", "none");
-      gameOverDiv.css("display", "block")
-      
-      // =====Varibles=====
-      var winGiphyURL = "https://api.giphy.com/v1/gifs/search?api_key=u9OvLuwupZYRbeoXLfTbguCAA1Z6E3Lk&q=win&limit=25&offset=0&rating=PG-13&lang=en";
-      var loseGiphyURL = "https://api.giphy.com/v1/gifs/search?api_key=u9OvLuwupZYRbeoXLfTbguCAA1Z6E3Lk&q=lose&limit=25&offset=0&rating=PG-13&lang=en";
-      
-      if (userScore > 0){
-         // Giphy Ajax call
-         $.ajax({
-            url: winGiphyURL,
-            method: "GET"
-         }).then(function(giphyData){
-            console.log(giphyData);
-            
-            var giphyDiv = $("#giphy-div");
-            var giphy = $("<img>");
+         // =====Varibles=====
+         var winGiphyURL = "https://api.giphy.com/v1/gifs/search?api_key=u9OvLuwupZYRbeoXLfTbguCAA1Z6E3Lk&q=win&limit=25&offset=0&rating=PG-13&lang=en";
+         var loseGiphyURL = "https://api.giphy.com/v1/gifs/search?api_key=u9OvLuwupZYRbeoXLfTbguCAA1Z6E3Lk&q=lose&limit=25&offset=0&rating=PG-13&lang=en";
 
-            giphy.attr("src", giphyData.data[Math.floor(Math.random()*25)].images.fixed_height.url);
+         if (userScore > 0) {
+            // Giphy Ajax call
+            $.ajax({
+               url: winGiphyURL,
+               method: "GET"
+            }).then(function (giphyData) {
+               console.log(giphyData);
 
-            giphyDiv.append(giphy);
+               var giphyDiv = $("#giphy-div");
+               var giphy = $("<img>");
 
-         });
+               giphy.attr("src", giphyData.data[Math.floor(Math.random() * 25)].images.fixed_height.url);
+
+               giphyDiv.append(giphy);
+
+            });
+         }
+
+         else {
+            // Giphy Ajax call
+            $.ajax({
+               url: loseGiphyURL,
+               method: "GET"
+            }).then(function (giphyData) {
+               console.log(giphyData);
+
+               var giphyDiv = $("#giphy-div");
+               var giphy = $("<img>");
+
+               giphy.attr("src", giphyData.data[Math.floor(Math.random() * 25)].images.fixed_height.url);
+
+               giphyDiv.append(giphy);
+            });
+         }
       }
 
-      else{
-         // Giphy Ajax call
-         $.ajax({
-            url: loseGiphyURL,
-            method: "GET"
-         }).then(function(giphyData){
-            console.log(giphyData);
-
-            var giphyDiv = $("#giphy-div");
-            var giphy = $("<img>");
-
-            giphy.attr("src", giphyData.data[Math.floor(Math.random()*25)].images.fixed_height.url);
-
-            giphyDiv.append(giphy);
-         });
-      }
-   }
-
-}, 1000)
-
-
-function timerStart() {
-   timerInterval;
+   }, 1000)
 }
+
+// function timerStart() {
+//    timerInterval;
+// }
 
 startingPage();
 
-timerStart();
 console.log(timerSpan);
 
 $(".game-category").on("click", generateQuestion)
