@@ -275,8 +275,8 @@ startingPage();
 
 console.log(timerSpan);
 
-$(".game-category").on("click", generateQuestion)
-$("#start-button").on("click", timerStart)
+$(".game-category").on("click", generateQuestion);
+// $("#start-button").on("click", startTimer);
 
 // ajaxCall(easyMusicURL);
 // ajaxCall(mediumCelebritiesURL)
