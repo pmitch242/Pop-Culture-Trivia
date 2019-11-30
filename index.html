@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pop Culture Trivia!</title>
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="bulmaswatch.min.css">
     <link rel="stylesheet" href="style.css">
@@ -86,35 +86,64 @@
               <p>Thanks for clicking. That felt good.</p>
               <a href="#" rel="modal:close">Close</a>
             </div>  -->
+            <!-- column headers -->
+            <div class="Columns"> 
+              <div class="button is-focused is-large">Film</div>
+              <div class="button is-focused is-large">Music</div>
+              <div class="button is-focused is-large">Games</div>
+              <div class="button is-focused is-large">Celebs</div>
+              <!-- <div class="button is-focused is-large">TV</div> -->
+              <!-- <div class="button is-focused is-large">Random</div> -->
+            </div>
+            <hr>
           <div id="game" class="center-align">
               <div class="buttons">
-                  <h2 class="title is-3"> Celebs </h2>
+                  <!-- <h2 class="gahd"> Celebs </h2> -->
                   
-                  <a class="button is-success is-large" data-game="easy-celebs"> 100 </a>
-                  <a class="button is-primary is-large" data-game="medium-celebs"> 300 </a>
-                  <a class="button is-danger is-large" data-game="hard-celebs"> 500 </a>
+                  <a class="button is-success game-category" data-game="easy-celebs"> 100 </a>
+                  <a class="button is-success game-category" data-game="easy-film"> 100 </a>
+                  <a class="button is-success game-category" data-game="easy-music"> 100 </a>
+                  <a class="button is-success game-category" data-game="easy-game"> 100 </a>
                 </div>
+               
             <div class="buttons">
-                <h2 class="title is-3"> Film </a></h2>
+                <!-- <h2 class="gahd"> Film </a></h2> -->
                 
-                <a class="button is-success is-large game-category"  data-game="easy-film"> 100 </a>
-                <a class="button is-primary is-large game-category" data-game="medium-film"> 300 </a>
-                <a class="button is-danger is-large game-category" data-game="hard-film"> 500 </a>
+                <a class="button is-primary game-category"  data-game="medium-celebs"> 300 </a>
+                <a class="button is-primary game-category" data-game="medium-film"> 300 </a>
+                <a class="button is-primary game-category" data-game="medium-music"> 300 </a>
+                <a class="button is-primary game-category" data-game="medium-game"> 300 </a>
               </div>
               <div class="buttons">
-                  <h2 class="title is-3"> Music </h2>
+                  <!-- <h2 class="gahd"> Music </h2> -->
                   
-                  <a class="button is-success is-large game-category" data-game="easy-music"> 100 </a>
-                  <a class="button is-primary is-large game-category" data-game="medium-music"> 300 </a>
-                  <a class="button is-danger is-large game-category" data-game="hard-music"> 500 </a>
+                  <a class="button is-danger game-category" data-game="hard-celebs"> 500 </a>
+                  <a class="button is-danger game-category" data-game="hard-film"> 500 </a>
+                  <a class="button is-danger game-category" data-game="hard-music"> 500 </a>
+                  <a class="button is-danger game-category" data-game="hard-game"> 500 </a>
                 </div>
-                <div class="buttons">
-                    <h2 class="title is-3"> Game </h2>
+                 <div class="buttons">
+                    <!-- <h2 class="gahd"> Game </h2> -->
                     
-                    <a class="button is-success is-large game-category" data-game="easy-game"> 100 </a>
-                    <a class="button is-primary is-large game-category" data-game="medium-game"> 300 </a>
-                    <a class="button is-danger is-large game-category" data-game="hard-game"> 500 </a>
+                    <a class="button is-success game-category" data-game="easy-celebs"> 100 </a>
+                    <a class="button is-success game-category" data-game="easy-film"> 100 </a>
+                    <a class="button is-success game-category" data-game="easy-music"> 100 </a>
+                    <a class="button is-success game-category" data-game="easy-game"> 100 </a>
                   </div>
+              <!-- <div class="buttons"> -->
+                    <!-- <h2 class="gahd"> Game </h2> -->
+                    
+                    <!-- <a class="button game-category" data-game="easy-tv"> 100 </a>
+                    <a class="button game-category" data-game="medium-tv"> 300 </a>
+                    <a class="button game-category" data-game="hard-tv"> 500 </a>
+                  </div>
+                  <div class="buttons is-four-fifths"> -->
+                    <!-- <h2 class="gahd"> Game </h2> -->
+                    
+                    <!-- <a class="button game-category" data-game="easy-game"> 100 </a>
+                    <a class="button game-category" data-game="medium-game"> 300 </a>
+                    <a class="button game-category" data-game="hard-game"> 500 </a>
+                  </div> -->
           </div>
         </div>
       </div>

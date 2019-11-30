@@ -1,10 +1,22 @@
-h2 {
-    padding-right: 1.2em;
+.columns {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    width: 100%;
+    padding-left: 60px;
+    padding-right: 60px;
+    
 }
 
 .center-align {
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    flex-direction: column;
+   flex-flow: row wrap;
+   justify-content: space-between;
+   align-items: baseline;
 }
+
+.button {
+    order: 3px;
+    flex: auto;
+    align-self: baseline; 
+}  
