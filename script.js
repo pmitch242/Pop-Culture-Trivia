@@ -6,6 +6,10 @@ var userScore = 0;
 var gameTime = 60;
 var correctAnswer = "";
 
+// creating empty array
+var namePull = [];
+var scorePull = [];
+
 // selecting html elements
 var startPageDiv = $("#start-page")
 var timerSpan = $("#timerValue")
@@ -44,13 +48,24 @@ function startingPage() {
          notificationDiv.append(exitButton);
          startPageDiv.append(notificationDiv);
 
-         exitButton.click(function(){
+         exitButton.click(function () {
             notificationDiv.css("display", "none");
          })
+         // start game 
       } else {
          startPageDiv.css("display", "none");
+
          //start timer 
          startTimer();
+
+         // store user name in varible
+         var nameHeader = $("#name-header");
+         nameHeader.text("Good Luck " + userName + "!");
+         
+         // store user name in localStorage
+         namePull = JSON.parse(localStorage.getItem("name") || "[]");
+         namePull.push(userName);
+         localStorage.setItem("name", JSON.stringify(namePull));
       }
 
 

@@ -56,12 +56,14 @@ h2 {
     margin-bottom: 45px;
 }
 
-#user-name, #start-button{
-    background: none;
-    color: lightcoral;
+#user-name{
+    background: white;
+    color: black;
     margin-bottom: 25px;
     max-width: 55%;
 }
+
+
 
 #start-button{
 float: right;
