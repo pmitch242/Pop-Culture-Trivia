@@ -7,6 +7,7 @@ var gameTime = 10000;
 var correctAnswer = "";
 
 // selecting html elements
+var startPageDiv = $("<#start-page>")
 var timerSpan = $("#timerValue")
 var userScoreDiv = $("#user-score-div")
 var gameSectionDiv = $("#game-section")
@@ -18,6 +19,14 @@ var answerBtn1 = $("#answer-1")
 var answerBtn2 = $("#answer-2")
 var answerBtn3 = $("#answer-3")
 var answerBtn4 = $("#answer-4")
+
+function startingPage(){
+   startPageDiv.css("display", "block");
+   var startTitleH1 = $("<h1>");
+   var instructionsDiv = $("<div>");
+   var playerDIv = $("<div>");
+
+}
 
 // setting intitial value of timerSpan to gameTime
 timerSpan.text("Timer: " + gameTime)
@@ -257,6 +266,8 @@ var timerInterval = setInterval(function () {
 function timerStart() {
    timerInterval;
 }
+
+startingPage();
 
 timerStart();
 console.log(timerSpan);

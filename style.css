@@ -25,3 +25,45 @@ h2 {
 .table th:not([align]) {
     text-align: center;
 }
+
+#start-page{
+    position: absolute;
+    color: white;
+    border: 1px gray solid;
+    border-radius: 25px;
+    box-shadow:20px 20px 50px #afecf1;  
+    height: 400px;
+    width: 65%;
+    left: 50%;
+    margin-left: -435.8px;
+    z-index: 999;
+    background: gray;
+    padding: 35px;
+}
+
+#start-page h1{
+    font-size: xx-large;
+    margin-bottom: 25px;
+}
+
+#start-page h2{
+    font-size: x-large;
+    margin-bottom: 25px;
+    padding-right: 0px;
+}
+
+#start-page p{
+    margin-bottom: 45px;
+}
+
+#user-name, #start-button{
+    background: none;
+    color: lightcoral;
+    margin-bottom: 25px;
+    max-width: 55%;
+}
+
+#start-button{
+float: right;
+margin-right: 20px;
+}
