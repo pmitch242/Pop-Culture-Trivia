@@ -24,6 +24,46 @@ var answerBtn2 = $("#answer-2")
 var answerBtn3 = $("#answer-3")
 var answerBtn4 = $("#answer-4")
 
+function highScorePage() {
+   // <tr>
+   //    <td> Three </td>
+   //    <td> Four </td>
+   //    <td> Five </td>
+   // </tr>
+
+   // store localStorage into arrays
+
+   nameDisplay = localStorage.getItem("name");
+   console.log(nameDisplay);
+   scoreDisplay = localStorage.getItem("score");
+
+   nameDisplay = JSON.parse(nameDisplay);
+   scoreDisplay = JSON.parse(scoreDisplay);
+   console.log("These names were in localStorage: " + nameDisplay);
+   console.log("These scores were in localStorage: " + nameDisplay);
+
+   if (nameDisplay != null) {
+      for(var i=0; i<nameDisplay.length; i++){
+
+   // =====Varibles=====
+   var scoreTBody = $(".scores-tbody")
+   var row = $("<tr>");
+   var nameColumn = $("<td>");
+   var scoreColumn = $("<td>");
+   var dateColumn = $("<td>");
+
+   nameColumn.text(nameDisplay[i]);
+   row.append(nameColumn);
+
+   scoreColumn.text(scoreDisplay[i]);
+   row.append(scoreColumn);
+
+   scoreTBody.append(row);
+
+      }
+   }
+}
+
 // starting Oage function
 function startingPage() {
    // =====Variables=====
@@ -253,7 +293,7 @@ function startTimer() {
 
          userScoreFinalDiv.text("Your score: " + userScore)
 
-         // store user name in localStorage
+         // store user score in localStorage
          scorePull = JSON.parse(localStorage.getItem("score") || "[]");
          scorePull.push(userScore);
          localStorage.setItem("score", JSON.stringify(scorePull));
@@ -308,6 +348,9 @@ function startTimer() {
 // function timerStart() {
 //    timerInterval;
 // }
+
+// highscore page
+highScorePage();
 
 // start game 
 startingPage();
