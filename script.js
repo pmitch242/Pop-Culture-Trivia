@@ -1,15 +1,25 @@
-var easyMusicURL = "https://opentdb.com/api.php?amount=1&category=12&difficulty=easy&type=multiple"
-var mediumMusicURL = "https://opentdb.com/api.php?amount=1&category=12&difficulty=medium&type=multiple"
-var hardMusicURL = "https://opentdb.com/api.php?amount=1&category=12&difficulty=hard&type=multiple"
-
-var easyCelebritiesURL = "https://opentdb.com/api.php?amount=1&category=26&difficulty=easy&type=multiple"
-var mediumCelebritiesURL = "https://opentdb.com/api.php?amount=1&category=26&difficulty=medium&type=multiple"
-var hardCelebritiesURL = "https://opentdb.com/api.php?amount=1&category=26&difficulty=hard&type=multiple"
-
+//creating empty variables
 var category = "";
 var difficulty = "";
-var possiblePoints = "";
+var possiblePoints = 0;
+var userScore = 0;
 var gameTime = 60;
+var correctAnswer = "";
+
+// selecting html elements
+var timerSpan = $("#timerValue")
+var userScoreDiv = $("#user-score-div")
+var gameSectionDiv = $("#game-section")
+var questionAnswerDiv = $("#question-answer-section")
+var questionDiv = $("#question-text")
+var answerBtn1 = $("#answer-1")
+var answerBtn2 = $("#answer-2")
+var answerBtn3 = $("#answer-3")
+var answerBtn4 = $("#answer-4")
+
+
+// setting intitial value of timerSpan to gameTime
+timerSpan.text("Timer: " + gameTime)
 
 function generateQuestion(event) {
    event.preventDefault();
@@ -19,84 +29,103 @@ function generateQuestion(event) {
 
    console.log(thisButton.attr("data-game"));
 
-
-   if (thisButtonData === "easy-music") {
-      category = "12";
-      difficulty = "easy";
-      possiblePoints = 100;
-   } else if (thisButtonData === "medium-music") {
-      category = "12";
-      difficulty = "medium";
-      possiblePoints = 300;
-   } else if (thisButtonData === "hard-music") {
-      category = "12";
-      difficulty = "hard";
-      possiblePoints = 500;
-   } else if (thisButtonData === "easy-film") {
-      category = "11";
-      difficulty = "easy";
-      possiblePoints = 100;
-   } else if (thisButtonData === "medium-film") {
-      category = "11";
-      difficulty = "medium";
-      possiblePoints = 300;
-   } else if (thisButtonData === "hard-film") {
-      category = "11";
-      difficulty = "hard";
-      possiblePoints = 500;
-   } else if (thisButtonData === "easy-celebs") {
-      category = "26";
-      difficulty = "easy";
-      possiblePoints = 100;
-   } else if (thisButtonData === "medium-celebs") {
-      category = "26";
-      difficulty = "medium";
-      possiblePoints = 300;
-   } else if (thisButtonData === "hard-celebs") {
-      category = "26";
-      difficulty = "hard";
-      possiblePoints = 500;
-   } else if (thisButtonData === "easy-tv") {
-      category = "14";
-      difficulty = "easy";
-      possiblePoints = 100;
-   } else if (thisButtonData === "medium-tv") {
-      category = "14";
-      difficulty = "medium";
-      possiblePoints = 300;
-   } else if (thisButtonData === "hard-tv") {
-      category = "14";
-      difficulty = "hard";
-      possiblePoints = 500;
-   } else if (thisButtonData === "easy-cartoon") {
-      category = "32";
-      difficulty = "easy";
-      possiblePoints = 100;
-   } else if (thisButtonData === "medium-cartoon") {
-      category = "32";
-      difficulty = "medium";
-      possiblePoints = 300;
-   } else if (thisButtonData === "hard-cartoon") {
-      category = "32";
-      difficulty = "hard";
-      possiblePoints = 500;
-   } else if (thisButtonData === "easy-video-game") {
-      category = "10";
-      difficulty = "easy";
-      possiblePoints = 100;
-   } else if (thisButtonData === "medium-video-game") {
-      category = "10";
-      difficulty = "medium";
-      possiblePoints = 300;
-   } else {
-      category = "10";
-      difficulty = "hard";
-      possiblePoints = 500;
+   // this switch statement determines the URL that we're going to use in the API
+   switch (thisButtonData) {
+      case "easy-music":
+         category = "12";
+         difficulty = "easy";
+         possiblePoints = 100;
+         break;
+      case "medium-music":
+         category = "12";
+         difficulty = "medium";
+         possiblePoints = 300;
+         break;
+      case "hard-music":
+         category = "12";
+         difficulty = "hard";
+         possiblePoints = 500;
+         break;
+      case "easy-film":
+         category = "11";
+         difficulty = "easy";
+         possiblePoints = 100;
+         break;
+      case "medium-film":
+         category = "11";
+         difficulty = "medium";
+         possiblePoints = 300;
+         break;
+      case "hard-film":
+         category = "11";
+         difficulty = "hard";
+         possiblePoints = 500;
+         break;
+      case "easy-celebs":
+         category = "26";
+         difficulty = "easy";
+         possiblePoints = 100;
+         break;
+      case "medium-celebs":
+         category = "26";
+         difficulty = "medium";
+         possiblePoints = 300;
+         break;
+      case "hard-celebs":
+         category = "26";
+         difficulty = "hard";
+         possiblePoints = 500;
+         break;
+      case "easy-tv":
+         category = "14";
+         difficulty = "easy";
+         possiblePoints = 100;
+         break;
+      case "medium-tv":
+         category = "14";
+         difficulty = "medium";
+         possiblePoints = 300;
+         break;
+      case "hard-tv":
+         category = "14";
+         difficulty = "hard";
+         possiblePoints = 500;
+         break;
+      case "easy-cartoon":
+         category = "32";
+         difficulty = "easy";
+         possiblePoints = 100;
+         break;
+      case "medium-cartoon":
+         category = "32";
+         difficulty = "medium";
+         possiblePoints = 300;
+         break;
+      case "hard-cartoon":
+         category = "32";
+         difficulty = "hard";
+         possiblePoints = 500;
+         break;
+      case "easy-video-game":
+         category = "10";
+         difficulty = "easy";
+         possiblePoints = 100;
+         break;
+      case "medium-video-game":
+         category = "10";
+         difficulty = "medium";
+         possiblePoints = 300;
+         break;
+      default:
+         category = "10";
+         difficulty = "hard";
+         possiblePoints = 500;
    }
 
    console.log(category);
    console.log(difficulty);
 
+   // query URL for the AJAX call
    var queryURL = "https://opentdb.com/api.php?amount=1&category=" + category + "&difficulty=" + difficulty + "&type=multiple";
 
    console.log(queryURL);
@@ -107,18 +136,18 @@ function generateQuestion(event) {
    }).then(
       function (response) {
 
-         // creating html elements to hold content
-         var questionDiv = $("<div>");
-         var answerButton1 = $("<button>");
-         var answerButton2 = $("<button>");
-         var answerButton3 = $("<button>");
-         var answerButton4 = $("<button>");
+         // // creating html elements to hold content
+         // var questionDiv = $("<div>");
+         // var answerButton1 = $("<button>");
+         // var answerButton2 = $("<button>");
+         // var answerButton3 = $("<button>");
+         // var answerButton4 = $("<button>");
 
-         // adding placeholder classes to the buttons
-         answerButton1.attr("class", "btn btn-primary")
-         answerButton2.attr("class", "btn btn-primary")
-         answerButton3.attr("class", "btn btn-primary")
-         answerButton4.attr("class", "btn btn-primary")
+         // // adding placeholder classes to the buttons
+         // answerButton1.attr("class", "btn btn-primary")
+         // answerButton2.attr("class", "btn btn-primary")
+         // answerButton3.attr("class", "btn btn-primary")
+         // answerButton4.attr("class", "btn btn-primary")
 
          // getting the question from the AJAX call
          var question = response.results[0].question;
@@ -127,7 +156,8 @@ function generateQuestion(event) {
          var possibleAnswers = [];
 
          // storing the correct answer in a variable. going to use this variable later in a comparison to say 'if value of the button pressed by the user === correctAnswer, take this action, else, take this action
-         var correctAnswer = response.results[0].correct_answer;
+         correctAnswer = response.results[0].correct_answer;
+         console.log(correctAnswer)
 
          // looping through the object to push the incorrect answers into an array
          for (var i = 0; i < response.results[0].incorrect_answers.length; i++) {
@@ -139,28 +169,65 @@ function generateQuestion(event) {
          // randomize possible answers - got this from w3schools
          possibleAnswers.sort(function (a, b) { return 0.5 - Math.random() });
 
-         // adding values to my HTML elements
+         // // adding values to my HTML elements
+         // questionDiv.text(question)
+         // answerButton1.text(possibleAnswers[0])
+         // answerButton2.text(possibleAnswers[1])
+         // answerButton3.text(possibleAnswers[2])
+         // answerButton4.text(possibleAnswers[3])
+
+         // adding values to HTML elements
          questionDiv.text(question)
-         answerButton1.text(possibleAnswers[0])
-         answerButton2.text(possibleAnswers[1])
-         answerButton3.text(possibleAnswers[2])
-         answerButton4.text(possibleAnswers[3])
+         answerBtn1.text(possibleAnswers[0]);
+         answerBtn2.text(possibleAnswers[1]);
+         answerBtn3.text(possibleAnswers[2]);
+         answerBtn4.text(possibleAnswers[3]);
+
+         gameSectionDiv.css("display", "none");
+         questionAnswerDiv.css("display", "block");
 
          // this is where we'll have to collect the user's choice of answer and compare that to the correctAnswer variable
 
+         $(".answer-option").on("click", function (event) {
+            event.preventDefault();
+
+            var thisAnswer = $(this)
+            if (thisAnswer.text() === correctAnswer) {
+               userScore = userScore + possiblePoints;
+               userScoreDiv.text(userScore)
+            } else {
+               userScore = userScore - possiblePoints;
+               userScoreDiv.text(userScore)
+            }
+
+            thisButton.css("display", "none");
+            gameSectionDiv.css("display", "flex");
+            questionAnswerDiv.css("display", "none");
+            possiblePoints = 0;
+         })
       }
    )
 }
 
+var timerInterval = setInterval(function () {
+   gameTime--;
+   timerSpan.text("Timer: " + gameTime);
+
+   if (gameTime === 0) {
+      clearInterval(timerInterval)
+   }
+
+}, 1000)
+
+
 function timerStart() {
-   // event.preventDefault();
-   setTimeout(function() {
-      gameTime--;
-      console.log(gameTime);
-   }, 1)
+   timerInterval;
 }
 
+
 timerStart();
+console.log(timerSpan);
+
 
 
 $(".game-category").on("click", generateQuestion)
@@ -184,11 +251,11 @@ $("#start-button").on("click", timerStart)
 // then you get a 'here's your score' screen
 // Score is at the top
 
-// we need a funciton to start the game that will be triggered by an on-click event - colin
+// we need a funciton to start the game that will be triggered by an on-click event - colin, done
 // we need to write function that takes in the user's selection for an answer and compares it to the correct answer - phill
-// we need a timer that counts down for 60 seconds (can change that depending on gameplay) - colin
+// we need a timer that counts down for 60 seconds (can change that depending on gameplay) - colin, done
 // we need a user score that increases and decreases depending on the user's response -phill
-// a way to determine how many points each question is worth - if this.attr("data-game", "easy-music") set a variable possiblePoints = 1, etc., etc., lots of if else - colin
+// a way to determine how many points each question is worth - if this.attr("data-game", "easy-music") set a variable possiblePoints = 1, etc., etc., lots of if else - colin, done
 // develop the giphy ajax - phill
 
 
