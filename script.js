@@ -3,7 +3,7 @@ var category = "";
 var difficulty = "";
 var possiblePoints = 0;
 var userScore = 0;
-var gameTime = 10;
+var gameTime = 10000;
 var correctAnswer = "";
 
 // selecting html elements
@@ -180,7 +180,11 @@ function generateQuestion(event) {
                userScoreDiv.text(userScore)
             }
 
-            thisButton.css("display", "none")
+            thisButton.css("display", "none");
+            // thisButton.attr("class", "button is-large");
+            // thisButton.css("cursor", "not-allowed");
+            // thisButton.attr("disabled");
+            // thisButton.attr("type", "button");
             gameSectionDiv.css("display", "block");
             questionAnswerDiv.css("display", "none");
             possiblePoints = 0;

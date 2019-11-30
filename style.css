@@ -8,3 +8,20 @@ h2 {
     justify-items: center;
     flex-direction: column;
 }
+
+#game-section{
+    margin: auto;
+}
+
+.content table th:not([align]), table td:not([align]), table th:not([align]), td:not([align]), th:not([align]){
+    text-align: center;
+}
+
+.scores-section{
+    max-width: 560px;
+    margin: auto;
+}
+
+.table th:not([align]) {
+    text-align: center;
+}
