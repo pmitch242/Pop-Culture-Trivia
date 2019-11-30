@@ -181,7 +181,7 @@ function generateQuestion(event) {
             }
 
             thisButton.css("display", "none")
-            gameSectionDiv.css("display", "flex");
+            gameSectionDiv.css("display", "block");
             questionAnswerDiv.css("display", "none");
             possiblePoints = 0;
          })

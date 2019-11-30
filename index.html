@@ -75,20 +75,71 @@
         Pop Culture Trivia
       </h1>
       <h2 class="button is-info is-rounded">
-        Player 1
+        Player
       </h2>
-      <h2 class="button is-primary is-rounded">
-        Player 2
-      </h2>
-      <h2 class="button is-success is-rounded">Start</h2>
+      <!-- <h2 class="button is-success is-rounded">Start</h2> -->
       <hr>
       <br>
       <!-- <div id="ex1" class="modal">
               <p>Thanks for clicking. That felt good.</p>
               <a href="#" rel="modal:close">Close</a>
             </div>  -->
-      <div id="game-section" class="center-align">
-        <div class="buttons">
+
+      <!-- <section class="section" id="content">
+        <table class="table is-fullwidth is-hoverable" id="scores">
+          <thead>
+            <tr>
+              <th> Date </th>
+              <th> Score </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td> Three </td>
+              <td> Four </td>
+            </tr> -->
+
+
+      <table id="game-section" class="table">
+        <thead>
+          <tr>
+            <th><h2 class="title is-3">Celebs</h2></th>
+            <th><h2 class="title is-3">Film</a></h2></th>
+            <th><h2 class="title is-3">Music</h2></th>
+            <th><h2 class="title is-3">Videos Game</h2></th>
+            <th><h2 class="title is-3">TV</h2></th>
+            <th><h2 class="title is-3">Cartoon</h2></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td><a class="button is-success is-large game-category" data-game="easy-celebs"> 100 </a></td>
+              <td><a class="button is-success is-large game-category" data-game="easy-film"> 100 </a></td>
+              <td><a class="button is-success is-large game-category" data-game="easy-music"> 100 </a></td>
+              <td><a class="button is-success is-large game-category" data-game="easy-video-game"> 100 </a></td>
+              <td><a class="button is-success is-large game-category" data-game="easy-tv"> 100 </a></td>
+              <td><a class="button is-success is-large game-category" data-game="easy-cartoon"> 100 </a></td>
+            </tr>
+
+            <tr>
+                <td><a class="button is-primary is-large game-category" data-game="medium-celebs"> 300 </a></td>
+                <td><a class="button is-primary is-large game-category" data-game="medium-film"> 300 </a></td>
+                <td><a class="button is-primary is-large game-category" data-game="medium-music"> 300 </a></td>
+                <td><a class="button is-primary is-large game-category" data-game="medium-video-game"> 300 </a></td>
+                <td><a class="button is-primary is-large game-category" data-game="medium-tv"> 300 </a></td>
+                <td><a class="button is-primary is-large game-category" data-game="medium-cartoon"> 300 </a></td>
+              </tr>
+
+              <tr>
+                  <td><a class="button is-danger is-large game-category" data-game="hard-celebs"> 500 </a></td>
+                  <td><a class="button is-danger is-large game-category" data-game="hard-film"> 500 </a></td>
+                  <td><a class="button is-danger is-large game-category" data-game="hard-music"> 500 </a></td>
+                  <td><a class="button is-danger is-large game-category" data-game="hard-video-game"> 500 </a></td>
+                  <td><a class="button is-danger is-large game-category" data-game="hard-tv"> 500 </a></td>
+                  <td><a class="button is-danger is-large game-category" data-game="hard-cartoon"> 500 </a></td>
+              </tr>
+        </tbody>
+        <!-- <div class="buttons">
           <h2 class="title is-3">Celebs</h2>
           <a class="button is-success is-large game-category" data-game="easy-celebs"> 100 </a>
           <a class="button is-primary is-large game-category" data-game="medium-celebs"> 300 </a>
@@ -123,8 +174,10 @@
           <a class="button is-success is-large game-category" data-game="easy-cartoon"> 100 </a>
           <a class="button is-primary is-large game-category" data-game="medium-cartoon"> 300 </a>
           <a class="button is-danger is-large game-category" data-game="hard-cartoon"> 500 </a>
-        </div>
-      </div> <!-- end of game section -->
+        </div> -->
+      </table>
+
+      <!-- end of game section -->
 
       <div id="question-answer-section" style="display: none">
         <div id="question-text"></div>
@@ -174,7 +227,6 @@
             </div> -->
   </nav>
   </div>
-  </section>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
