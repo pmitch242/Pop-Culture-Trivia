@@ -11,12 +11,13 @@ var timerSpan = $("#timerValue")
 var userScoreDiv = $("#user-score-div")
 var gameSectionDiv = $("#game-section")
 var questionAnswerDiv = $("#question-answer-section")
+var gameOverDiv = $("#game-over")
+var userScoreFinalDiv = $("#user-score-final")
 var questionDiv = $("#question-text")
 var answerBtn1 = $("#answer-1")
 var answerBtn2 = $("#answer-2")
 var answerBtn3 = $("#answer-3")
 var answerBtn4 = $("#answer-4")
-
 
 // setting intitial value of timerSpan to gameTime
 timerSpan.text("Timer: " + gameTime)
@@ -136,19 +137,6 @@ function generateQuestion(event) {
    }).then(
       function (response) {
 
-         // // creating html elements to hold content
-         // var questionDiv = $("<div>");
-         // var answerButton1 = $("<button>");
-         // var answerButton2 = $("<button>");
-         // var answerButton3 = $("<button>");
-         // var answerButton4 = $("<button>");
-
-         // // adding placeholder classes to the buttons
-         // answerButton1.attr("class", "btn btn-primary")
-         // answerButton2.attr("class", "btn btn-primary")
-         // answerButton3.attr("class", "btn btn-primary")
-         // answerButton4.attr("class", "btn btn-primary")
-
          // getting the question from the AJAX call
          var question = response.results[0].question;
 
@@ -169,15 +157,8 @@ function generateQuestion(event) {
          // randomize possible answers - got this from w3schools
          possibleAnswers.sort(function (a, b) { return 0.5 - Math.random() });
 
-         // // adding values to my HTML elements
-         // questionDiv.text(question)
-         // answerButton1.text(possibleAnswers[0])
-         // answerButton2.text(possibleAnswers[1])
-         // answerButton3.text(possibleAnswers[2])
-         // answerButton4.text(possibleAnswers[3])
-
          // adding values to HTML elements
-         questionDiv.text(question)
+         questionDiv.html(question)
          answerBtn1.text(possibleAnswers[0]);
          answerBtn2.text(possibleAnswers[1]);
          answerBtn3.text(possibleAnswers[2]);
@@ -187,7 +168,6 @@ function generateQuestion(event) {
          questionAnswerDiv.css("display", "block");
 
          // this is where we'll have to collect the user's choice of answer and compare that to the correctAnswer variable
-
          $(".answer-option").on("click", function (event) {
             event.preventDefault();
 
@@ -200,11 +180,15 @@ function generateQuestion(event) {
                userScoreDiv.text(userScore)
             }
 
-            thisButton.css("display", "none");
+            thisButton.css("display", "none")
             gameSectionDiv.css("display", "flex");
             questionAnswerDiv.css("display", "none");
             possiblePoints = 0;
          })
+
+
+         
+
       }
    )
 }
@@ -213,8 +197,18 @@ var timerInterval = setInterval(function () {
    gameTime--;
    timerSpan.text("Timer: " + gameTime);
 
+   // this is where we set the end of the game
    if (gameTime === 0) {
       clearInterval(timerInterval)
+
+      userScoreFinalDiv.text("Your score: " + userScore)
+
+      gameSectionDiv.css("display", "none");
+      questionAnswerDiv.css("display", "none");
+      gameOverDiv.css("display", "block")
+
+
+
    }
 
 }, 1000)
@@ -224,21 +218,14 @@ function timerStart() {
    timerInterval;
 }
 
-
 timerStart();
 console.log(timerSpan);
-
-
 
 $(".game-category").on("click", generateQuestion)
 $("#start-button").on("click", timerStart)
 
-
-
 // ajaxCall(easyMusicURL);
 // ajaxCall(mediumCelebritiesURL)
-
-
 
 // you get the jeoporday-style
 // you get 18 choices - 6 categories and 3 different questions (100, 300, 500) for each category
