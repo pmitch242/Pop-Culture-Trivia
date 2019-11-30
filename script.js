@@ -3,7 +3,7 @@ var category = "";
 var difficulty = "";
 var possiblePoints = 0;
 var userScore = 0;
-var gameTime = 60;
+var gameTime = 10;
 var correctAnswer = "";
 
 // selecting html elements
@@ -206,8 +206,36 @@ var timerInterval = setInterval(function () {
       gameSectionDiv.css("display", "none");
       questionAnswerDiv.css("display", "none");
       gameOverDiv.css("display", "block")
+      
+      // =====Varibles=====
+      var winGiphyURL = "https://api.giphy.com/v1/gifs/search?api_key=u9OvLuwupZYRbeoXLfTbguCAA1Z6E3Lk&q=win&limit=1&offset=0&rating=PG-13&lang=en";
+      var loseGiphyURL = "https://api.giphy.com/v1/gifs/search?api_key=u9OvLuwupZYRbeoXLfTbguCAA1Z6E3Lk&q=lose&limit=1&offset=0&rating=PG-13&lang=en";
+      
+      if (userScore > 0){
+         $.ajax({
+            url: winGiphyURL,
+            method: "GET"
+         }).then(function(giphyData){
+            console.log(giphyData);
+            
+         //    var giphyDiv = $("<div>");
+         //    var giphy = $("<img>");
 
+         //    giphy.attr("scr", giphyData.data[0].images.fixed_height.url);
 
+         // });
+      }
+
+      else{
+         $.ajax({
+            url: loseGiphyURL,
+            method: "GET"
+         }).then(function(giphyData){
+            console.log(giphyData);
+         });
+      }
+
+      // Giphy Ajax call
 
    }
 
@@ -239,10 +267,11 @@ $("#start-button").on("click", timerStart)
 // Score is at the top
 
 // we need a funciton to start the game that will be triggered by an on-click event - colin, done
-// we need to write function that takes in the user's selection for an answer and compares it to the correct answer - phill
+// we need to write function that takes in the user's selection for an answer and compares it to the correct answer - phill, done
 // we need a timer that counts down for 60 seconds (can change that depending on gameplay) - colin, done
-// we need a user score that increases and decreases depending on the user's response -phill
+// we need a user score that increases and decreases depending on the user's response -phill, done
 // a way to determine how many points each question is worth - if this.attr("data-game", "easy-music") set a variable possiblePoints = 1, etc., etc., lots of if else - colin, done
 // develop the giphy ajax - phill
+// Store highscores - phill
 
 
