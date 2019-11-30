@@ -14,88 +14,98 @@ var gameTime = 60;
 function generateQuestion(event) {
    event.preventDefault();
 
-   if (this.attr("data-game", "easy-music")) {
+   var thisButton = $(this);
+   var thisButtonData = thisButton.attr("data-game");
+
+   console.log(thisButton.attr("data-game"));
+
+
+   if (thisButtonData === "easy-music") {
       category = "12";
       difficulty = "easy";
       possiblePoints = 100;
-   } else if (this.attr("data-game", "medium-music")) {
+   } else if (thisButtonData === "medium-music") {
       category = "12";
-      difficult = "medium";
+      difficulty = "medium";
       possiblePoints = 300;
-   } else if (this.attr("data-game", "hard-music")) {
+   } else if (thisButtonData === "hard-music") {
       category = "12";
-      difficult = "hard";
+      difficulty = "hard";
       possiblePoints = 500;
-   } else if (this.attr("data-game", "easy-film")) {
+   } else if (thisButtonData === "easy-film") {
       category = "11";
       difficulty = "easy";
       possiblePoints = 100;
-   } else if (this.attr("data-game", "medium-film")) {
+   } else if (thisButtonData === "medium-film") {
       category = "11";
-      difficult = "medium";
+      difficulty = "medium";
       possiblePoints = 300;
-   } else if (this.attr("data-game", "hard-film")) {
+   } else if (thisButtonData === "hard-film") {
       category = "11";
-      difficult = "hard";
+      difficulty = "hard";
       possiblePoints = 500;
-   } else if (this.attr("data-game", "easy-celebs")) {
+   } else if (thisButtonData === "easy-celebs") {
       category = "26";
       difficulty = "easy";
       possiblePoints = 100;
-   } else if (this.attr("data-game", "medium-celebs")) {
+   } else if (thisButtonData === "medium-celebs") {
       category = "26";
-      difficult = "medium";
+      difficulty = "medium";
       possiblePoints = 300;
-   } else if (this.attr("data-game", "hard-celebs")) {
+   } else if (thisButtonData === "hard-celebs") {
       category = "26";
-      difficult = "hard";
+      difficulty = "hard";
       possiblePoints = 500;
-   } else if (this.attr("data-game", "easy-tv")) {
+   } else if (thisButtonData === "easy-tv") {
       category = "14";
       difficulty = "easy";
       possiblePoints = 100;
-   } else if (this.attr("data-game", "medium-tv")) {
+   } else if (thisButtonData === "medium-tv") {
       category = "14";
-      difficult = "medium";
+      difficulty = "medium";
       possiblePoints = 300;
-   } else if (this.attr("data-game", "hard-tv")) {
+   } else if (thisButtonData === "hard-tv") {
       category = "14";
-      difficult = "hard";
+      difficulty = "hard";
       possiblePoints = 500;
-   } else if (this.attr("data-game", "easy-cartoon")) {
+   } else if (thisButtonData === "easy-cartoon") {
       category = "32";
       difficulty = "easy";
       possiblePoints = 100;
-   } else if (this.attr("data-game", "medium-cartoon")) {
+   } else if (thisButtonData === "medium-cartoon") {
       category = "32";
-      difficult = "medium";
+      difficulty = "medium";
       possiblePoints = 300;
-   } else if (this.attr("data-game", "hard-cartoon")) {
+   } else if (thisButtonData === "hard-cartoon") {
       category = "32";
-      difficult = "hard";
+      difficulty = "hard";
       possiblePoints = 500;
-   } else if (this.attr("data-game", "easy-video-game")) {
+   } else if (thisButtonData === "easy-video-game") {
       category = "10";
       difficulty = "easy";
       possiblePoints = 100;
-   } else if (this.attr("data-game", "medium-video-game")) {
+   } else if (thisButtonData === "medium-video-game") {
       category = "10";
-      difficult = "medium";
+      difficulty = "medium";
       possiblePoints = 300;
    } else {
       category = "10";
-      difficult = "hard";
+      difficulty = "hard";
       possiblePoints = 500;
    }
 
+   console.log(category);
+   console.log(difficulty);
+
    var queryURL = "https://opentdb.com/api.php?amount=1&category=" + category + "&difficulty=" + difficulty + "&type=multiple";
+
+   console.log(queryURL);
 
    $.ajax({
       url: queryURL,
       method: "GET"
    }).then(
       function (response) {
-         console.log(response);
 
          // creating html elements to hold content
          var questionDiv = $("<div>");
@@ -135,9 +145,6 @@ function generateQuestion(event) {
          answerButton2.text(possibleAnswers[1])
          answerButton3.text(possibleAnswers[2])
          answerButton4.text(possibleAnswers[3])
-
-         console.log(question)
-         console.log(possibleAnswers)
 
          // this is where we'll have to collect the user's choice of answer and compare that to the correctAnswer variable
 
