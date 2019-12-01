@@ -3,7 +3,7 @@ var category = "";
 var difficulty = "";
 var possiblePoints = 0;
 var userScore = 0;
-var gameTime = 5;
+var gameTime = 9999;
 var correctAnswer = "";
 
 // creating empty array
@@ -26,12 +26,6 @@ var answerBtn3 = $("#answer-3")
 var answerBtn4 = $("#answer-4")
 
 function highScorePage() {
-   // <tr>
-   //    <td> Three </td>
-   //    <td> Four </td>
-   //    <td> Five </td>
-   // </tr>
-
    // store localStorage into arrays
 
    nameDisplay = localStorage.getItem("name");
@@ -43,25 +37,25 @@ function highScorePage() {
    dateDisplay = JSON.parse(dateDisplay);
 
    if (nameDisplay != null) {
-      for(var i=0; i<nameDisplay.length; i++){
+      for (var i = 0; i < nameDisplay.length; i++) {
 
-   // =====Varibles=====
-   var scoreTBody = $(".scores-tbody")
-   var row = $("<tr>");
-   var nameColumn = $("<td>");
-   var scoreColumn = $("<td>");
-   var dateColumn = $("<td>");
+         // =====Varibles=====
+         var scoreTBody = $(".scores-tbody")
+         var row = $("<tr>");
+         var nameColumn = $("<td>");
+         var scoreColumn = $("<td>");
+         var dateColumn = $("<td>");
 
-   nameColumn.text(nameDisplay[i]);
-   row.append(nameColumn);
+         nameColumn.text(nameDisplay[i]);
+         row.append(nameColumn);
 
-   scoreColumn.text(scoreDisplay[i]);
-   row.append(scoreColumn);
+         scoreColumn.text(scoreDisplay[i]);
+         row.append(scoreColumn);
 
-   dateColumn.text(dateDisplay[i]);
-   row.append(dateColumn);
+         dateColumn.text(dateDisplay[i]);
+         row.append(dateColumn);
 
-   scoreTBody.append(row);
+         scoreTBody.append(row);
 
       }
    }
@@ -81,6 +75,7 @@ function startingPage() {
 
       // Prevents user from leaving input blank
       if (userName.trim() === "") {
+         $("#myForm :input").prop("disabled", true);
          var notificationDiv = $("<div>");
          notificationDiv.attr("class", "notification");
          notificationDiv.text("Please enter a name, do not leave blank!");
@@ -93,6 +88,7 @@ function startingPage() {
 
          exitButton.click(function () {
             notificationDiv.css("display", "none");
+            $("#myForm :input").prop("disabled", false);
          })
          // start game 
       } else {
@@ -279,6 +275,10 @@ function generateQuestion(event) {
 
             thisButton.css("display", "none");
             gameSectionDiv.css("display", "block");
+
+            // reset margin
+            gameSectionDiv.attr("style", "margin: auto")
+
             questionAnswerDiv.css("display", "none");
             possiblePoints = 0;
          })
@@ -286,6 +286,7 @@ function generateQuestion(event) {
    )
 }
 function startTimer() {
+   $(".game-category").on("click", generateQuestion);
    var timerInterval = setInterval(function () {
       gameTime--;
       timerSpan.text("Timer: " + gameTime);
@@ -366,7 +367,7 @@ startingPage();
 
 console.log(timerSpan);
 
-$(".game-category").on("click", generateQuestion);
+// $(".game-category").on("click", generateQuestion);
 // $("#start-button").on("click", startTimer);
 
 // ajaxCall(easyMusicURL);
@@ -389,6 +390,6 @@ $(".game-category").on("click", generateQuestion);
 // we need a user score that increases and decreases depending on the user's response -phill, done
 // a way to determine how many points each question is worth - if this.attr("data-game", "easy-music") set a variable possiblePoints = 1, etc., etc., lots of if else - colin, done
 // develop the giphy ajax - phill, done
-// Store highscores - phill
+// Store highscores - phill, done
 
 
