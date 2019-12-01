@@ -2,6 +2,9 @@
 
 .notification{
     max-width: 500px;
+    position: absolute;
+    right: 54px;
+    bottom: 5px;
 }
 
 .center-align {
