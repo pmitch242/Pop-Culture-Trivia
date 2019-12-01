@@ -75,6 +75,7 @@ function startingPage() {
 
       // Prevents user from leaving input blank
       if (userName.trim() === "") {
+         $("#myForm :input").prop("disabled", true);
          var notificationDiv = $("<div>");
          notificationDiv.attr("class", "notification");
          notificationDiv.text("Please enter a name, do not leave blank!");
@@ -87,6 +88,7 @@ function startingPage() {
 
          exitButton.click(function () {
             notificationDiv.css("display", "none");
+            $("#myForm :input").prop("disabled", false);
          })
          // start game 
       } else {
