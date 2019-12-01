@@ -3,7 +3,11 @@ var category = "";
 var difficulty = "";
 var possiblePoints = 0;
 var userScore = 0;
+<<<<<<< Updated upstream
 var gameTime = 9999;
+=======
+var gameTime = 30;
+>>>>>>> Stashed changes
 var correctAnswer = "";
 
 // creating empty array
@@ -24,6 +28,8 @@ var answerBtn1 = $("#answer-1")
 var answerBtn2 = $("#answer-2")
 var answerBtn3 = $("#answer-3")
 var answerBtn4 = $("#answer-4")
+
+
 
 function highScorePage() {
    // store localStorage into arrays
@@ -63,6 +69,11 @@ function highScorePage() {
 
 // starting Oage function
 function startingPage() {
+
+   // fading in the start screens, game section fading in just prior to the start page, using a timeout to create that effect
+   gameSectionDiv.fadeIn(250);
+   setTimeout(function() {startPageDiv.fadeIn(500)}, 150);
+
    // =====Variables=====
    var startButton = $("#start-button")
 
@@ -92,7 +103,7 @@ function startingPage() {
          })
          // start game 
       } else {
-         startPageDiv.css("display", "none");
+         startPageDiv.fadeOut(250);
 
          //start timer 
          startTimer();
@@ -257,8 +268,9 @@ function generateQuestion(event) {
          answerBtn3.html(possibleAnswers[2]);
          answerBtn4.html(possibleAnswers[3]);
 
-         gameSectionDiv.css("display", "none");
-         questionAnswerDiv.css("display", "block");
+         // fade out, fade in
+         gameSectionDiv.fadeOut(150)
+         setTimeout(function() {questionAnswerDiv.fadeIn(150)}, 150);
 
          // this is where we'll have to collect the user's choice of answer and compare that to the correctAnswer variable
          $(".answer-option").on("click", function (event) {
@@ -274,12 +286,17 @@ function generateQuestion(event) {
             }
 
             thisButton.css("display", "none");
+<<<<<<< Updated upstream
             gameSectionDiv.css("display", "block");
 
             // reset margin
             gameSectionDiv.attr("style", "margin: auto")
 
             questionAnswerDiv.css("display", "none");
+=======
+            questionAnswerDiv.fadeOut(150);
+            setTimeout(function() { gameSectionDiv.fadeIn(150)}, 150);
+>>>>>>> Stashed changes
             possiblePoints = 0;
          })
       }
@@ -308,9 +325,10 @@ function startTimer() {
          datePull.push(currentDate);
          localStorage.setItem("date", JSON.stringify(datePull));
 
-         gameSectionDiv.css("display", "none");
-         questionAnswerDiv.css("display", "none");
-         gameOverDiv.css("display", "block")
+         // fading out, fading in sections
+         gameSectionDiv.fadeOut(250);
+         questionAnswerDiv.fadeOut(250);
+         setTimeout(function() {gameOverDiv.fadeIn(250)}, 250);
 
          // =====Varibles=====
          var winGiphyURL = "https://api.giphy.com/v1/gifs/search?api_key=u9OvLuwupZYRbeoXLfTbguCAA1Z6E3Lk&q=win&limit=25&offset=0&rating=PG-13&lang=en";
