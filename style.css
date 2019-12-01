@@ -1,9 +1,9 @@
-h2 {
+/* h2 {
     padding-right: 1.2em;
-}
+} */
 
 .center-align {
-    display: flex;
+    display: block;
     align-items: center;
     justify-items: center;
     flex-direction: column;
@@ -12,6 +12,16 @@ h2 {
 #game-section{
     margin: auto;
 }
+
+#game-section h2{
+    margin: auto 20px;
+    text-align: center;
+}
+
+#game-section a{
+    width: 185px;
+}
+
 
 .content table th:not([align]), table td:not([align]), table th:not([align]), td:not([align]), th:not([align]){
     text-align: center;
@@ -65,7 +75,7 @@ h2 {
 
 .question-text {
     font-size: 1.4em;
-    margin-bottom: 15px;
+    margin-bottom: 50px;
 }
 
 .answer-option {
@@ -83,7 +93,6 @@ margin-right: 20px;
 
 .game-over {
     font-size: 2.25em;
-
 }
 
 .user-score-final {

@@ -273,6 +273,10 @@ function generateQuestion(event) {
 
             thisButton.css("display", "none");
             gameSectionDiv.css("display", "block");
+
+            // reset margin
+            gameSectionDiv.attr("style", "margin: auto")
+
             questionAnswerDiv.css("display", "none");
             possiblePoints = 0;
          })
@@ -384,6 +388,6 @@ console.log(timerSpan);
 // we need a user score that increases and decreases depending on the user's response -phill, done
 // a way to determine how many points each question is worth - if this.attr("data-game", "easy-music") set a variable possiblePoints = 1, etc., etc., lots of if else - colin, done
 // develop the giphy ajax - phill, done
-// Store highscores - phill
+// Store highscores - phill, done
 
 
