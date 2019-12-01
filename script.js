@@ -3,7 +3,7 @@ var category = "";
 var difficulty = "";
 var possiblePoints = 0;
 var userScore = 0;
-var gameTime = 9999;
+var gameTime = 5;
 var correctAnswer = "";
 
 // creating empty array
@@ -66,6 +66,9 @@ function startingPage() {
    // =====Variables=====
    var startButton = $("#start-button")
 
+   gameSectionDiv.fadeIn(250)
+   setTimeout(function() {startPageDiv.fadeIn(500)}, 150)
+
    startButton.click(function (element) {
       element.preventDefault();
 
@@ -92,7 +95,8 @@ function startingPage() {
          })
          // start game 
       } else {
-         startPageDiv.css("display", "none");
+         
+         startPageDiv.fadeOut(250)
 
          //start timer 
          startTimer();
@@ -257,9 +261,9 @@ function generateQuestion(event) {
          answerBtn3.html(possibleAnswers[2]);
          answerBtn4.html(possibleAnswers[3]);
 
-         gameSectionDiv.css("display", "none");
-         questionAnswerDiv.css("display", "block");
-
+         gameSectionDiv.fadeOut(150)
+         setTimeout(function() {questionAnswerDiv.fadeIn(150)}, 150)
+   
          // this is where we'll have to collect the user's choice of answer and compare that to the correctAnswer variable
          $(".answer-option").on("click", function (event) {
             event.preventDefault();
@@ -273,13 +277,21 @@ function generateQuestion(event) {
                userScoreDiv.text(userScore)
             }
 
+            
+            // fade out, fade in
+            questionAnswerDiv.fadeOut(150);
+
+            setTimeout(function() { 
+               gameSectionDiv.fadeIn(150);
+               gameSectionDiv.attr("style", "margin: auto")
+            }, 150);
+            
+            // hide the button that was selected 
             thisButton.css("display", "none");
-            gameSectionDiv.css("display", "block");
 
-            // reset margin
-            gameSectionDiv.attr("style", "margin: auto")
+            // reset margin            
 
-            questionAnswerDiv.css("display", "none");
+            // reset point to 0
             possiblePoints = 0;
          })
       }
@@ -308,9 +320,9 @@ function startTimer() {
          datePull.push(currentDate);
          localStorage.setItem("date", JSON.stringify(datePull));
 
-         gameSectionDiv.css("display", "none");
-         questionAnswerDiv.css("display", "none");
-         gameOverDiv.css("display", "block")
+         gameSectionDiv.fadeOut(150);
+         questionAnswerDiv.fadeOut(150);
+         setTimeout(function() {gameOverDiv.fadeIn(150)}, 150)
 
          // =====Varibles=====
          var winGiphyURL = "https://api.giphy.com/v1/gifs/search?api_key=u9OvLuwupZYRbeoXLfTbguCAA1Z6E3Lk&q=win&limit=25&offset=0&rating=PG-13&lang=en";
