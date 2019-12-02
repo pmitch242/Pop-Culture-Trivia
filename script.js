@@ -3,11 +3,7 @@ var category = "";
 var difficulty = "";
 var possiblePoints = 0;
 var userScore = 0;
-<<<<<<< Updated upstream
 var gameTime = 9999;
-=======
-var gameTime = 30;
->>>>>>> Stashed changes
 var correctAnswer = "";
 
 // creating empty array
@@ -286,17 +282,8 @@ function generateQuestion(event) {
             }
 
             thisButton.css("display", "none");
-<<<<<<< Updated upstream
-            gameSectionDiv.css("display", "block");
-
-            // reset margin
-            gameSectionDiv.attr("style", "margin: auto")
-
-            questionAnswerDiv.css("display", "none");
-=======
             questionAnswerDiv.fadeOut(150);
             setTimeout(function() { gameSectionDiv.fadeIn(150)}, 150);
->>>>>>> Stashed changes
             possiblePoints = 0;
          })
       }
