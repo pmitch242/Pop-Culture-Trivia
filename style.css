@@ -20,6 +20,10 @@
     width: 100%;
 }
 
+.game-category {
+    width: 100%;
+}
+
 #game-section h2{
     margin: auto 20px;
     text-align: center;
@@ -81,7 +85,7 @@
 
 .question-text {
     font-size: 1.4em;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .answer-option {
@@ -90,7 +94,23 @@
     border-radius: 3px;
     background-color: #f1f1f1;
     margin-right: 10px;
+    margin-bottom: 10px;
+    color: #1c1c1c;
 }
+
+    .answer-option:hover {
+        transition: .5s;
+        background-color: #1c1c1c;
+        color: #4f5a;
+    }
+
+.timer, .user-score {
+    margin-top: 10px;
+    font-size: 1.25em;
+
+}
+
+
 
 #start-button{
 float: right;
@@ -117,4 +137,48 @@ margin-right: 20px;
 #giphy-div img{
     width: 500px;
     max-height: 330px;
+}
+
+@media screen and (max-width: 768px) {
+    .button.is-large {
+        font-size: 1rem;
+    }
+
+    .container {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #start-page {
+        width: 90%;
+        padding: 14px 12px;
+        left: 5%;
+    }
+
+    #start-button {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .question-text {
+        margin-bottom: 25px;
+    }
+
+    #question-answer-section {
+        padding: 15px;
+    }
+
+    hr {
+        margin: 5px 0;
+    }
+
+    .navbar-item {
+        text-align: center;
+        font-size: larger;
+    }
+
+        .navbar-item:focus {
+            background-color: white;
+            color: black;
+        }
 }
