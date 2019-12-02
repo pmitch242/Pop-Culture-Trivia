@@ -113,3 +113,8 @@ margin-right: 20px;
 #question-answer-section{
     text-align: center;
 }
+
+#giphy-div img{
+    width: 500px;
+    max-height: 330px;
+}

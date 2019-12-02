@@ -361,6 +361,7 @@ function startTimer() {
                var giphy = $("<img>");
                // pick a giphy at random from the giphyData array
                giphy.attr("src", giphyData.data[Math.floor(Math.random() * 25)].images.fixed_height.url);
+               giphy.attr("class", "giphyImg");
                giphyDiv.append(giphy);
             });
          }
