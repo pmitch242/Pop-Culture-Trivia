@@ -306,7 +306,7 @@ function startTimer() {
       timerSpan.text("Timer: " + gameTime);
 
       // this is where we set the end of the game
-      if (gameTime === 0) {
+      if (gameTime <= 0) {
          clearInterval(timerInterval)
 
          userScoreFinalDiv.text("Your score: " + userScore)
