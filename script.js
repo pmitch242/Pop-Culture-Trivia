@@ -288,6 +288,8 @@ function generateQuestion(event) {
             
             // hide the button that was selected 
             thisButton.css("display", "none");
+            questionAnswerDiv.fadeOut(150);
+            setTimeout(function() { gameSectionDiv.fadeIn(150)}, 150);
 
             // reset margin            
 
@@ -304,7 +306,7 @@ function startTimer() {
       timerSpan.text("Timer: " + gameTime);
 
       // this is where we set the end of the game
-      if (gameTime === 0) {
+      if (gameTime <= 0) {
          clearInterval(timerInterval)
 
          userScoreFinalDiv.text("Your score: " + userScore)
@@ -359,6 +361,7 @@ function startTimer() {
                var giphy = $("<img>");
                // pick a giphy at random from the giphyData array
                giphy.attr("src", giphyData.data[Math.floor(Math.random() * 25)].images.fixed_height.url);
+               giphy.attr("class", "giphyImg");
                giphyDiv.append(giphy);
             });
          }

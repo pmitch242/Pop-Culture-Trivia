@@ -16,6 +16,8 @@
 
 #game-section{
     margin: auto;
+    table-layout: fixed;
+    width: 100%;
 }
 
 #game-section h2{
@@ -24,7 +26,8 @@
 }
 
 #game-section a{
-    width: 185px;
+    width: inherit;
+    font-size: inherit;
 }
 
 
@@ -47,10 +50,8 @@
     border: 1px gray solid;
     border-radius: 25px;
     box-shadow:20px 20px 50px #afecf1;  
-    height: 400px;
     width: 65%;
-    left: 50%;
-    margin-left: -435.8px;
+    left: 18%;
     z-index: 999;
     background: gray;
     padding: 35px;
@@ -100,7 +101,20 @@ margin-right: 20px;
     font-size: 2.25em;
 }
 
+#game-over{
+    text-align: center;
+}
+
 .user-score-final {
     font-size: 1.75em;
     margin-bottom: 10px;
+}
+
+#question-answer-section{
+    text-align: center;
+}
+
+#giphy-div img{
+    width: 500px;
+    max-height: 330px;
 }

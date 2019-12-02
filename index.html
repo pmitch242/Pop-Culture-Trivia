@@ -12,104 +12,84 @@
 </head>
 
 <body>
-  <div class="hero-head">
-    <nav class="navbar">
-      <div class="container">
-        <div class="navbar-brand">
-
-          <span class="navbar-burger burger" data-target="navbarMenuHero1">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </div>
-        <div id="navbarMenuHero1" class="navbar-menu">
-          <div class="navbar-end">
-            <a class="navbar-item" a href="index.html">
-              New Game
+    <div class="hero-head">
+      <nav class="navbar">
+        <div class="container">
+          <div class="navbar-brand">
+            <a class="navbar-item">
+              <img src="top logo.jpg" alt="Logo">
             </a>
-            <a class="navbar-item" a href="hscore.html">
-              High Scores
-            </a>
-            </a>
-            <div class="navbar-item timer" id="timerValue"></div>
-            <div class="navbar-item user-score-div" id="user-score-div"></div>
-            <!-- <div class="navbar-item has-dropdown is-hoverable">
-                      <div class="navbar-link">
-                        More
-                      </div> -->
-            <div id="moreDropdown" class="navbar-dropdown ">
-              <a class="navbar-item " href="#">
-                <div class="level is-mobile">
-                  <div class="level-left">
-                    <div class="level-item">
-                      <p>
-                        <strong>Extensions</strong>
-                        <br>
-                        <small>Side projects to enhance Bulma</small>
-                      </p>
+            <span class="navbar-burger burger" data-target="navbarMenuHero1">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+          <div id="navbarMenuHero1" class="navbar-menu">
+            <div class="navbar-end">
+              <a class="navbar-item" a href="index.html">
+                New Game
+              </a>
+              <a class="navbar-item" a href="hscore.html">
+                High Scores
+              </a>
+              </a>
+              <div class="navbar-item timer" id="timerValue"></div>
+              <div class="navbar-item user-score-div" id="user-score-div"></div>
+              <div id="moreDropdown" class="navbar-dropdown ">
+                <a class="navbar-item " href="#">
+                  <div class="level is-mobile">
+                    <div class="level-left">
+                      <div class="level-item">
+                        <p>
+                          <strong>Extensions</strong>
+                          <br>
+                          <small>Side projects to enhance Bulma</small>
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              </div>
             </div>
+            <span class="navbar-item">
+              <a class="button is-primary is-inverted">
+                <span class="icon">
+                  <i class="fa fa-github"></i>
+                </span>
+              </a>
+            </span>
           </div>
-          <span class="navbar-item">
-            <a class="button is-primary is-inverted">
-              <span class="icon">
-                <i class="fa fa-github"></i>
-              </span>
-            </a>
-          </span>
         </div>
+    </div>
+    </nav>
+
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title">
+          Pop Culture Trivia
+        </h1>
+
+        <!-- Start Page -->
+        <div class="container" id="start-page" style="display: none;">
+          <h1>Ready to Play?</h1>
+          <h2>Instructions</h2>
+          <p>It's time to play the Pop Culture Trivia Game! Answer a question correctly and get the points for that
+            category. But don't go too quickly - if you answer incorrectly, you lose the points for that category. Stick
+            to your strengths. Choose wisely.</p>
+          <form id="myForm">
+            <input class="input" id="user-name" type="text" placeholder="Enter Name Here">
+            <button class="button is-primary" id="start-button" type="submit" value="START GAME">START GAME</button>
+          </form>
+        </div>
+        <!-- Start Page -->
+
+        <h2 class="button is-info is-rounded" id="name-header">Player</h2>
+        <!-- <h2 class="button is-success is-rounded">Start</h2> -->
       </div>
-  </div>
-  </nav>
-  </div>
-  <!-- Hero content: will be in the middle -->
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <h1 class="title">
-        Pop Culture Trivia
-      </h1>
-
-      <!-- Start Page -->
-      <div id="start-page" style="display: none;">
-        <h1>Ready to Play?</h1>
-        <h2>Instructions</h2>
-        <p>It's time to play the Pop Culture Trivia Game! Answer a question correctly and get the points for that
-          category. But don't go too quickly - if you answer incorrectly, you lose the points for that category. Stick
-          to your strengths. Choose wisely.</p>
-        <form id="myForm">
-          <input class="input" id="user-name" type="text" placeholder="Enter Name Here">
-          <button class="button is-primary" id="start-button" type="submit" value="START GAME">START GAME</button>
-        </form>
-      </div>
-      <!-- Start Page -->
-
-      <h2 class="button is-info is-rounded" id="name-header">Player</h2>
-      <!-- <h2 class="button is-success is-rounded">Start</h2> -->
-      <hr>
-      <br>
-      <!-- <div id="ex1" class="modal">
-              <p>Thanks for clicking. That felt good.</p>
-              <a href="#" rel="modal:close">Close</a>
-            </div>  -->
-
-      <!-- <section class="section" id="content">
-        <table class="table is-fullwidth is-hoverable" id="scores">
-          <thead>
-            <tr>
-              <th> Date </th>
-              <th> Score </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td> Three </td>
-              <td> Four </td>
-            </tr> -->
-
+    </div>
+    <hr>
 
       <table id="game-section" class="table" style="display: none;">
         <thead>
@@ -162,94 +142,26 @@
             <td><a class="button is-danger is-large game-category" data-game="hard-cartoon"> 500 </a></td>
           </tr>
         </tbody>
-        <!-- <div class="buttons">
-          <h2 class="title is-3">Celebs</h2>
-          <a class="button is-success is-large game-category" data-game="easy-celebs"> 100 </a>
-          <a class="button is-primary is-large game-category" data-game="medium-celebs"> 300 </a>
-          <a class="button is-danger is-large game-category" data-game="hard-celebs"> 500 </a>
-        </div>
-        <div class="buttons">
-          <h2 class="title is-3">Film</a></h2>
-          <a class="button is-success is-large game-category" data-game="easy-film"> 100 </a>
-          <a class="button is-primary is-large game-category" data-game="medium-film"> 300 </a>
-          <a class="button is-danger is-large game-category" data-game="hard-film"> 500 </a>
-        </div>
-        <div class="buttons">
-          <h2 class="title is-3">Music</h2>
-          <a class="button is-success is-large game-category" data-game="easy-music"> 100 </a>
-          <a class="button is-primary is-large game-category" data-game="medium-music"> 300 </a>
-          <a class="button is-danger is-large game-category" data-game="hard-music"> 500 </a>
-        </div>
-        <div class="buttons">
-          <h2 class="title is-3">Videos Game</h2>
-          <a class="button is-success is-large game-category" data-game="easy-books"> 100 </a>
-          <a class="button is-primary is-large game-category" data-game="medium-books"> 300 </a>
-          <a class="button is-danger is-large game-category" data-game="hard-books"> 500 </a>
-        </div>
-        <div class="buttons">
-          <h2 class="title is-3">TV</h2>
-          <a class="button is-success is-large game-category" data-game="easy-tv"> 100 </a>
-          <a class="button is-primary is-large game-category" data-game="medium-tv"> 300 </a>
-          <a class="button is-danger is-large game-category" data-game="hard-tv"> 500 </a>
-        </div>
-        <div class="buttons">
-          <h2 class="title is-3">Cartoon</h2>
-          <a class="button is-success is-large game-category" data-game="easy-cartoon"> 100 </a>
-          <a class="button is-primary is-large game-category" data-game="medium-cartoon"> 300 </a>
-          <a class="button is-danger is-large game-category" data-game="hard-cartoon"> 500 </a>
-        </div> -->
+
       </table>
 
-      <!-- end of game section -->
-
-      <div id="question-answer-section" style="display: none">
-        <div class="question-text" id="question-text"></div>
-        <button class="answer-option" id="answer-1"></button>
-        <button class="answer-option" id="answer-2"></button>
-        <button class="answer-option" id="answer-3"></button>
-        <button class="answer-option" id="answer-4"></button>
-
-      </div> <!-- end of game section -->
-
-      <div id="game-over" style="display: none;">
-        <div class="game-over">Game Over!</div>
-        <div class="user-score-final" id="user-score-final"></div>
-        <div id="giphy-div"></div>
-      </div>
+    <div id="question-answer-section" style="display: none">
+      <div class="question-text" id="question-text"></div>
+      <button class="answer-option" id="answer-1"></button>
+      <button class="answer-option" id="answer-2"></button>
+      <button class="answer-option" id="answer-3"></button>
+      <button class="answer-option" id="answer-4"></button>
     </div>
-  </div>
+    
+    <!-- end of game section -->
 
+    <div class= "container" id="game-over" style="display: none;">
+      <div class="game-over">Game Over!</div>
+      <div class="user-score-final" id="user-score-final"></div>
+      <div id="giphy-div"></div>
+    </div>
 
-
-
-
-  <!-- Hero footer: will stick at the bottom -->
-  <!-- <div class="hero-foot">
-          <nav class="tabs">
-            <div class="container">
-              <ul>
-                <li class="is-active">
-                  <a>Overview</a>
-                </li>
-                <li>
-                  <a>Modifiers</a>
-                </li>
-                <li>
-                  <a>Grid</a>
-                </li>
-                <li>
-                  <a>Elements</a>
-                </li>
-                <li>
-                  <a>Components</a>
-                </li>
-                <li>
-                  <a>Layout</a>
-                </li>
-              </ul>
-            </div> -->
-  </nav>
-  </div>
+    <!-- end of game section -->
 </body>
 
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
