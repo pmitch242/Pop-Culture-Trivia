@@ -3,7 +3,7 @@ var category = "";
 var difficulty = "";
 var possiblePoints = 0;
 var userScore = 0;
-var gameTime = 5;
+var gameTime = 1000;
 var correctAnswer = "";
 
 // creating empty array
@@ -381,6 +381,15 @@ highScorePage();
 startingPage();
 
 console.log(timerSpan);
+
+// mobile responsiveness click for the menu
+$(".navbar-burger").click(function() {
+
+   // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+   $(".navbar-burger").toggleClass("is-active");
+   $(".navbar-menu").toggleClass("is-active");
+
+});
 
 // $(".game-category").on("click", generateQuestion);
 // $("#start-button").on("click", startTimer);
