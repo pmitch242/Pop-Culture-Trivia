@@ -3,11 +3,7 @@ var category = "";
 var difficulty = "";
 var possiblePoints = 0;
 var userScore = 0;
-<<<<<<< HEAD
-var gameTime = 9999;
-=======
 var gameTime = 5;
->>>>>>> 0b52b42f4ac0dedc6b75e5ca92896b734fbb6631
 var correctAnswer = "";
 
 // creating empty array
@@ -292,15 +288,12 @@ function generateQuestion(event) {
             
             // hide the button that was selected 
             thisButton.css("display", "none");
-<<<<<<< HEAD
             questionAnswerDiv.fadeOut(150);
             setTimeout(function() { gameSectionDiv.fadeIn(150)}, 150);
-=======
 
             // reset margin            
 
             // reset point to 0
->>>>>>> 0b52b42f4ac0dedc6b75e5ca92896b734fbb6631
             possiblePoints = 0;
          })
       }
