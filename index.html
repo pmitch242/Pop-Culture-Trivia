@@ -60,9 +60,30 @@
       <h2 class="button is-primary is-rounded" id="pl2">
         Player 2
       </h2>
-      <a class="button is-danger is-large" data-target="#myModal"
-      a onclick="$('#myModal').toggleClass('is-active')"></h2>
-      <h2 class="button is-success is-rounded" id="start">Start</h2>
+      <section class="section" id="modal">
+      <h2><a class="button is-success is-large" data-target="#myModal"
+      a onclick="$('#myModal').toggleClass('is-active')">Start</a></h2>
+      <div class="modal" id="myModal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title"> Quiz Game</p>
+          <button class="instr"></button>
+        </header>
+        <section class="modal-card-body">
+         Click the "x" on the right if you have put your user name in. How much do you know about pop culture?? You will be given 2mins
+         to answer as many questions as you can correctly. At the end of the
+         2mins you score will be added up. To start the game click start on
+         the bottom.
+        </section>
+        <footer class="modal-card-foot">
+          <a class="button is-primary" id="gamst">Start the game</a>
+        </footer>
+      <!-- <h2 class="button is-success is-rounded" id="start">Start</h2> -->
+      </div>
+    </div>
+    </section>
+    
       <hr>
       <br>
       <!-- <div id="ex1" class="modal">
