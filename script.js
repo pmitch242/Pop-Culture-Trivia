@@ -25,7 +25,7 @@ var answerBtn2 = $("#answer-2")
 var answerBtn3 = $("#answer-3")
 var answerBtn4 = $("#answer-4")
 
-// adding sounds to variables
+// adding sounds to variables using the Howler library
 
 var correctAnswerSound = new Howl({
    src: ["./assets/mp3s/correct-answer.mp3"]
@@ -38,6 +38,11 @@ var loseGameSound = new Howl({
 })
 var winGameSound = new Howl({
    src: ["./assets/mp3s/game-over-win.mp3"]
+})
+var gameplayMusic = new Howl({
+   src: ["./assets/mp3s/game-play-music.mp3"],
+   loop: true,
+   volume: 0.5,
 })
 
 
@@ -117,6 +122,10 @@ function startingPage() {
 
          //start timer 
          startTimer();
+
+         // play game music
+         gameplayMusic.play();
+
 
          // store user name in varible
          var nameHeader = $("#name-header");
@@ -366,6 +375,7 @@ function startTimer() {
 
             });
 
+            gameplayMusic.stop();
             winGameSound.play();
          }
 
@@ -385,6 +395,8 @@ function startTimer() {
                giphy.attr("class", "giphyImg");
                giphyDiv.append(giphy);
             });
+
+            gameplayMusic.stop();
             loseGameSound.play();
          }
       }
