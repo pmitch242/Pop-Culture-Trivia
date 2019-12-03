@@ -3,7 +3,7 @@ var category = "";
 var difficulty = "";
 var possiblePoints = 0;
 var userScore = 0;
-var gameTime = 1000;
+var gameTime = 30;
 var correctAnswer = "";
 
 // creating empty array
@@ -36,7 +36,7 @@ function highScorePage() {
    scoreDisplay = JSON.parse(scoreDisplay);
    dateDisplay = JSON.parse(dateDisplay);
 
-   if (nameDisplay != null) {
+   if (nameDisplay != null && scoreDisplay != null) {
       for (var i = 0; i < nameDisplay.length; i++) {
 
          // =====Varibles=====
