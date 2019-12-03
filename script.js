@@ -28,21 +28,28 @@ var answerBtn4 = $("#answer-4")
 // adding sounds to variables using the Howler library
 
 var correctAnswerSound = new Howl({
-   src: ["./assets/mp3s/correct-answer.mp3"]
+   src: ["./assets/mp3s/correct-answer.mp3"],
+   volume: 0.7,
 })
 var wrongAnswerSound = new Howl({
-   src: ["./assets/mp3s/wrong-answer.mp3"]
+   src: ["./assets/mp3s/wrong-answer.mp3"],
+   volume: 0.7,
 })
 var loseGameSound = new Howl({
-   src: ["./assets/mp3s/game-over-lose.mp3"]
+   src: ["./assets/mp3s/game-over-lose.mp3"],
+   volume: 0.7,
 })
 var winGameSound = new Howl({
-   src: ["./assets/mp3s/game-over-win.mp3"]
+   src: ["./assets/mp3s/game-over-win.mp3"],
+   volume: 0.7,
 })
 var gameplayMusic = new Howl({
    src: ["./assets/mp3s/game-play-music.mp3"],
    loop: true,
    volume: 0.5,
+})
+var questionSelectSound = new Howl({
+   src: ["./assets/mp3s/swoosh.mp3"]
 })
 
 
@@ -147,6 +154,8 @@ timerSpan.text("Timer: " + gameTime)
 
 function generateQuestion(event) {
    event.preventDefault();
+
+   questionSelectSound.play();
 
    var thisButton = $(this);
    var thisButtonData = thisButton.attr("data-game");
@@ -304,7 +313,6 @@ function generateQuestion(event) {
                userScore = userScore - possiblePoints;
                userScoreDiv.text(userScore)
             }
-
 
             // fade out, fade in
             questionAnswerDiv.fadeOut(150);
