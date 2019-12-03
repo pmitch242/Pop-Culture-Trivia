@@ -25,6 +25,22 @@ var answerBtn2 = $("#answer-2")
 var answerBtn3 = $("#answer-3")
 var answerBtn4 = $("#answer-4")
 
+// adding sounds to variables
+
+var correctAnswerSound = new Howl({
+   src: ["./assets/mp3s/correct-answer.mp3"]
+})
+var wrongAnswerSound = new Howl({
+   src: ["./assets/mp3s/wrong-answer.mp3"]
+})
+var loseGameSound = new Howl({
+   src: ["./assets/mp3s/game-over-lose.mp3"]
+})
+var winGameSound = new Howl({
+   src: ["./assets/mp3s/game-over-win.mp3"]
+})
+
+
 function highScorePage() {
    // store localStorage into arrays
 
@@ -63,11 +79,12 @@ function highScorePage() {
 
 // starting Oage function
 function startingPage() {
+
    // =====Variables=====
    var startButton = $("#start-button")
 
    gameSectionDiv.fadeIn(250)
-   setTimeout(function() {startPageDiv.fadeIn(500)}, 150)
+   setTimeout(function () { startPageDiv.fadeIn(500) }, 150)
 
    startButton.click(function (element) {
       element.preventDefault();
@@ -95,7 +112,7 @@ function startingPage() {
          })
          // start game 
       } else {
-         
+
          startPageDiv.fadeOut(250)
 
          //start timer 
@@ -262,34 +279,36 @@ function generateQuestion(event) {
          answerBtn4.html(possibleAnswers[3]);
 
          gameSectionDiv.fadeOut(150)
-         setTimeout(function() {questionAnswerDiv.fadeIn(150)}, 150)
-   
+         setTimeout(function () { questionAnswerDiv.fadeIn(150) }, 150)
+
          // this is where we'll have to collect the user's choice of answer and compare that to the correctAnswer variable
          $(".answer-option").on("click", function (event) {
             event.preventDefault();
 
             var thisAnswer = $(this)
             if (thisAnswer.text() === correctAnswer) {
+               correctAnswerSound.play();
                userScore = userScore + possiblePoints;
                userScoreDiv.text(userScore)
             } else {
+               wrongAnswerSound.play();
                userScore = userScore - possiblePoints;
                userScoreDiv.text(userScore)
             }
 
-            
+
             // fade out, fade in
             questionAnswerDiv.fadeOut(150);
 
-            setTimeout(function() { 
+            setTimeout(function () {
                gameSectionDiv.fadeIn(150);
                gameSectionDiv.attr("style", "margin: auto")
             }, 150);
-            
+
             // hide the button that was selected 
             thisButton.css("display", "none");
             questionAnswerDiv.fadeOut(150);
-            setTimeout(function() { gameSectionDiv.fadeIn(150)}, 150);
+            setTimeout(function () { gameSectionDiv.fadeIn(150) }, 150);
 
             // reset margin            
 
@@ -324,7 +343,7 @@ function startTimer() {
 
          gameSectionDiv.fadeOut(150);
          questionAnswerDiv.fadeOut(150);
-         setTimeout(function() {gameOverDiv.fadeIn(150)}, 150)
+         setTimeout(function () { gameOverDiv.fadeIn(150) }, 150)
 
          // =====Varibles=====
          var winGiphyURL = "https://api.giphy.com/v1/gifs/search?api_key=u9OvLuwupZYRbeoXLfTbguCAA1Z6E3Lk&q=win&limit=25&offset=0&rating=PG-13&lang=en";
@@ -346,6 +365,8 @@ function startTimer() {
                giphyDiv.append(giphy);
 
             });
+
+            winGameSound.play();
          }
 
          else {
@@ -364,6 +385,7 @@ function startTimer() {
                giphy.attr("class", "giphyImg");
                giphyDiv.append(giphy);
             });
+            loseGameSound.play();
          }
       }
 
@@ -383,7 +405,7 @@ startingPage();
 console.log(timerSpan);
 
 // mobile responsiveness click for the menu
-$(".navbar-burger").click(function() {
+$(".navbar-burger").click(function () {
 
    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
    $(".navbar-burger").toggleClass("is-active");
