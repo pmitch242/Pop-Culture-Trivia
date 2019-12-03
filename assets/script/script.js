@@ -3,7 +3,7 @@ var category = "";
 var difficulty = "";
 var possiblePoints = 0;
 var userScore = 0;
-var gameTime = 30;
+var gameTime = 90;
 var correctAnswer = "";
 
 // creating empty array
@@ -24,6 +24,7 @@ var answerBtn1 = $("#answer-1")
 var answerBtn2 = $("#answer-2")
 var answerBtn3 = $("#answer-3")
 var answerBtn4 = $("#answer-4")
+var clearButton = $("#clear-button");
 
 // adding sounds to variables using the Howler library
 
@@ -87,6 +88,18 @@ function highScorePage() {
 
       }
    }
+
+   // Hide clear button when localStorage is empty
+   else{
+      clearButton.css("display", "none");
+   }
+   // clear localStorage
+   clearButton.on('click', function () {
+      localStorage.clear();
+      location.reload();
+  });
+
+
 }
 
 // starting Oage function
