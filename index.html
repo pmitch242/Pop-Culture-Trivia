@@ -25,9 +25,6 @@
               </div>
               <div id="navbarMenuHero1 is-mobile" class="navbar-menu">
                 <div class="navbar-end">
-                  <a class="navbar-item" a href="index.html" >
-                    Home
-                  </a>
                   <a class="navbar-item" a href="hscore.html">
                     High Scores
                   </a>
@@ -36,19 +33,6 @@
                     Timer
                   </a>
                   <a class="navbar-item" a href="game.html" > Nerd Tube Quiz</a>
-                   <!-- <div class="navbar-item is-hoverable">
-                      <div class="navbar-link">
-                        Quiz Games
-                      </div>
-            <div id="moreDropdown" class="navbar-dropdown ">
-              <a class="navbar-item " href="#">
-                <div class="level is-mobile">
-                  <div class="level-left">
-                    <div class="level-item">
-                        <a href="game.html">TUBE NERD</a>
-                    </div>
-                  </div>
-                </div> -->
               </a>
             </div>
           </div>
@@ -70,12 +54,14 @@
       <h1 class="title">
         Pop Culture Trivia
       </h1>
-      <h2 class="button is-info is-rounded">
+      <h2 class="button is-info is-rounded" id="pl1">
         Player 1
       </h2>
-      <h2 class="button is-primary is-rounded">
+      <h2 class="button is-primary is-rounded" id="pl2">
         Player 2
       </h2>
+      <a class="button is-danger is-large" data-target="#myModal"
+      a onclick="$('#myModal').toggleClass('is-active')"></h2>
       <h2 class="button is-success is-rounded" id="start">Start</h2>
       <hr>
       <br>
@@ -115,24 +101,6 @@
           <a class="button is-danger is-large game-category" data-game="hard-film"> 500 </a>
           <a class="button is-danger is-large game-category" data-game="hard-music"> 500 </a>
         </div>
-        <!-- <div class="buttons">
-          
-          <a class="button is-success is-large game-category" data-game="easy-video-game"> 100 </a>
-          <a class="button is-primary is-large game-category" data-game="medium-video-game"> 300 </a>
-          <a class="button is-danger is-large game-category" data-game="hard-video-game"> 500 </a>
-        </div>
-        <div class="buttons">
-          
-          <a class="button is-success is-large game-category" data-game="easy-tv"> 100 </a>
-          <a class="button is-primary is-large game-category" data-game="medium-tv"> 300 </a>
-          <a class="button is-danger is-large game-category" data-game="hard-tv"> 500 </a>
-        </div>
-        <div class="buttons">
-          
-          <a class="button is-success is-large game-category" data-game="easy-cartoon"> 100 </a>
-          <a class="button is-primary is-large game-category" data-game="medium-cartoon"> 300 </a>
-          <a class="button is-danger is-large game-category" data-game="hard-cartoon"> 500 </a>
-        </div> -->
       </div>
     </div>
   </div>

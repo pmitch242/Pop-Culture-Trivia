@@ -25,6 +25,12 @@
     align-self: baseline; 
 }
 
+.table_wrapper {
+    border-color: green;
+    border: 3px;
+    font-size: 12pt;
+}
+
 #scores {
     order: 3px;
     flex: auto;
