@@ -1,3 +1,5 @@
+$(document).ready(function() {
+
 //creating empty variables
 var category = "";
 var difficulty = "";
@@ -369,9 +371,18 @@ function startTimer() {
          datePull = JSON.parse(localStorage.getItem("date") || "[]");
          datePull.push(currentDate);
          localStorage.setItem("date", JSON.stringify(datePull));
-
+         
          gameSectionDiv.fadeOut(150);
          questionAnswerDiv.fadeOut(150);
+
+         setTimeout(function() {
+            gameSectionDiv.fadeOut(150);
+            questionAnswerDiv.fadeOut(150);
+         }, 150)
+
+         gameSectionDiv.css("display", "none");
+         questionAnswerDiv.css("display", "none");
+
          setTimeout(function () { gameOverDiv.fadeIn(150) }, 150)
 
          // =====Varibles=====
