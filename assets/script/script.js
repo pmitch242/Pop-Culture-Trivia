@@ -3,8 +3,9 @@ var category = "";
 var difficulty = "";
 var possiblePoints = 0;
 var userScore = 0;
-var gameTime = 90;
+var gameTime = 3;
 var correctAnswer = "";
+var userName;
 
 // creating empty array
 var namePull = [];
@@ -90,14 +91,14 @@ function highScorePage() {
    }
 
    // Hide clear button when localStorage is empty
-   else{
+   else {
       clearButton.css("display", "none");
    }
    // clear localStorage
    clearButton.on('click', function () {
       localStorage.clear();
       location.reload();
-  });
+   });
 
 
 }
@@ -115,7 +116,7 @@ function startingPage() {
       element.preventDefault();
 
       // =====Varibles=====
-      var userName = $("#user-name").val();
+      userName = $("#user-name").val();
       console.log(userName);
 
       // Prevents user from leaving input blank
@@ -150,14 +151,7 @@ function startingPage() {
          // store user name in varible
          var nameHeader = $("#name-header");
          nameHeader.text("Good Luck " + userName + "!");
-
-         // store user name in localStorage
-         namePull = JSON.parse(localStorage.getItem("name") || "[]");
-         namePull.push(userName);
-         localStorage.setItem("name", JSON.stringify(namePull));
       }
-
-
    });
 
 }
@@ -360,6 +354,11 @@ function startTimer() {
 
          userScoreFinalDiv.text("Your score: " + userScore)
 
+         // store user name in localStorage
+         namePull = JSON.parse(localStorage.getItem("name") || "[]");
+         namePull.push(userName);
+         localStorage.setItem("name", JSON.stringify(namePull));
+
          // store user score in localStorage
          scorePull = JSON.parse(localStorage.getItem("score") || "[]");
          scorePull.push(userScore);
@@ -425,10 +424,6 @@ function startTimer() {
    }, 1000)
 }
 
-// function timerStart() {
-//    timerInterval;
-// }
-
 // highscore page
 highScorePage();
 
@@ -445,30 +440,3 @@ $(".navbar-burger").click(function () {
    $(".navbar-menu").toggleClass("is-active");
 
 });
-
-// $(".game-category").on("click", generateQuestion);
-// $("#start-button").on("click", startTimer);
-
-// ajaxCall(easyMusicURL);
-// ajaxCall(mediumCelebritiesURL)
-
-// you get the jeoporday-style
-// you get 18 choices - 6 categories and 3 different questions (100, 300, 500) for each category
-// user presses 'start game'
-// a 60-second timer starts
-// you can answer as many questions as possible in the time
-// if you get an answer right, you get the points for the category
-// if youy get the answer wrong, you lose the points for the category
-// game ends when 60 seconds is over OR if user answers all the questions
-// then you get a 'here's your score' screen
-// Score is at the top
-
-// we need a funciton to start the game that will be triggered by an on-click event - colin, done
-// we need to write function that takes in the user's selection for an answer and compares it to the correct answer - phill, done
-// we need a timer that counts down for 60 seconds (can change that depending on gameplay) - colin, done
-// we need a user score that increases and decreases depending on the user's response -phill, done
-// a way to determine how many points each question is worth - if this.attr("data-game", "easy-music") set a variable possiblePoints = 1, etc., etc., lots of if else - colin, done
-// develop the giphy ajax - phill, done
-// Store highscores - phill, done
-
-
