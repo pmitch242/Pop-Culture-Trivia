@@ -58,16 +58,29 @@ $(document).ready(function () {
    function highScorePage() {
       // store localStorage into arrays
 
-      nameDisplay = localStorage.getItem("name");
-      scoreDisplay = localStorage.getItem("score");
-      dateDisplay = localStorage.getItem("date");
+      gameDisplay = localStorage.getItem("games");
+      gameDisplay = JSON.parse(gameDisplay);
 
-      nameDisplay = JSON.parse(nameDisplay);
-      scoreDisplay = JSON.parse(scoreDisplay);
-      dateDisplay = JSON.parse(dateDisplay);
+      //function to sort scores in descending
+      function orderScores() {
+         gameDisplay.sort(function (a, b) {
+            return parseInt(b.score) - parseInt(a.score);
+         });
+      }
 
-      if (nameDisplay != null && scoreDisplay != null) {
-         for (var i = 0; i < nameDisplay.length; i++) {
+      orderScores();
+
+      // nameDisplay = game.;
+      // scoreDisplay = localStorage.getItem("score");
+      // dateDisplay = localStorage.getItem("date");
+
+      // nameDisplay = JSON.parse(nameDisplay);
+      // scoreDisplay = JSON.parse(scoreDisplay);
+      // dateDisplay = JSON.parse(dateDisplay);
+
+      if (gameDisplay != null) {
+         console.log(gameDisplay);
+         for (var i = 0; i < gameDisplay.length; i++) {
 
             // =====Varibles=====
             var scoreTBody = $(".scores-tbody")
@@ -76,13 +89,13 @@ $(document).ready(function () {
             var scoreColumn = $("<td>");
             var dateColumn = $("<td>");
 
-            nameColumn.text(nameDisplay[i]);
+            nameColumn.text(gameDisplay[i].user);
             row.append(nameColumn);
 
-            scoreColumn.text(scoreDisplay[i]);
+            scoreColumn.text(gameDisplay[i].score);
             row.append(scoreColumn);
 
-            dateColumn.text(dateDisplay[i]);
+            dateColumn.text(gameDisplay[i].date);
             row.append(dateColumn);
 
             scoreTBody.append(row);
@@ -342,6 +355,7 @@ $(document).ready(function () {
          }
       )
    }
+
    function startTimer() {
       $(".game-category").on("click", generateQuestion);
       var timerInterval = setInterval(function () {
@@ -361,10 +375,10 @@ $(document).ready(function () {
             let date = currentDate;
 
             game = JSON.parse(localStorage.getItem("games") || "[]");
-            game.push({user: user, score: score, date: date});
+            game.push({ user: user, score: score, date: date });
 
             localStorage.setItem("games", JSON.stringify(game));
-                        
+
 
             // // store user name in localStorage
             // namePull = JSON.parse(localStorage.getItem("name") || "[]");
@@ -450,8 +464,6 @@ $(document).ready(function () {
 
    // start game 
    startingPage();
-
-   console.log(timerSpan);
 
    // mobile responsiveness click for the menu
    $(".navbar-burger").click(function () {
