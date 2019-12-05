@@ -64,7 +64,11 @@ if (n != null && score != null) {
 // console.log("look",n[i])
       // =====Varibles=====
    
-    
+   var score = [0,0,-100,500,400,-1600,300,2300,500,-1000,100,-1200,-400]
+   score.sort(function(a, b) {
+      return a - b;
+   })
+   console.log(score);
   var obj = {
      name:n[i],
      score:score[i],
@@ -81,7 +85,7 @@ if (n != null && score != null) {
    }
 
          
-      }
+      
 
 sortTable()
 
