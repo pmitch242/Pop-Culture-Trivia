@@ -76,8 +76,34 @@ if (n != null && score != null) {
   }
   players.push(obj)    
    }
-}
-  
+}  
+
+// function bubble_Sort(a)
+// {
+//     var swapp;
+//     var n = a.length-1;
+//     var x=a;
+//     do {
+//         swapp = false;
+//         for (var i=0; i < n; i++)
+//         {
+//             if (x[i] < x[i+1])
+//             {
+//                var temp = x[i];
+//                x[i] = x[i+1];
+//                x[i+1] = temp;
+//                swapp = true;
+//             }
+//         }
+//         n--;
+//     } while (swapp);
+//  return x; 
+// }
+
+// console.log(bubble_Sort([0, 0, -100, 500, 400, -1600, 300, 2300, 500, -1000, 100, -1200, -400]));
+
+//   bubble_Sort()
+
       for (let i = 0; i < players.length; i++) {
          const p = players[i].score;
 
@@ -510,5 +536,3 @@ $(".navbar-burger").click(function () {
 // a way to determine how many points each question is worth - if this.attr("data-game", "easy-music") set a variable possiblePoints = 1, etc., etc., lots of if else - colin, done
 // develop the giphy ajax - phill, done
 // Store highscores - phill, done
-
-
