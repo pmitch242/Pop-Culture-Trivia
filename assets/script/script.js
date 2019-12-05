@@ -5,14 +5,12 @@ $(document).ready(function () {
    var difficulty = "";
    var possiblePoints = 0;
    var userScore = 0;
-   var gameTime = 3;
+   var gameTime = 10;
    var correctAnswer = "";
    var userName;
 
    // creating empty array
-   var namePull = [];
-   var scorePull = [];
-   var datePull = [];
+   var game = [];
 
    // selecting html elements
    var startPageDiv = $("#start-page")
@@ -356,21 +354,33 @@ $(document).ready(function () {
 
             userScoreFinalDiv.text("Your score: " + userScore)
 
-            // store user name in localStorage
-            namePull = JSON.parse(localStorage.getItem("name") || "[]");
-            namePull.push(userName);
-            localStorage.setItem("name", JSON.stringify(namePull));
+            let user = userName;
+            let score = userScore;
 
-            // store user score in localStorage
-            scorePull = JSON.parse(localStorage.getItem("score") || "[]");
-            scorePull.push(userScore);
-            localStorage.setItem("score", JSON.stringify(scorePull));
-
-            // store date and time in localStorage
             var currentDate = moment().format('L LT');
-            datePull = JSON.parse(localStorage.getItem("date") || "[]");
-            datePull.push(currentDate);
-            localStorage.setItem("date", JSON.stringify(datePull));
+            let date = currentDate;
+
+            game = JSON.parse(localStorage.getItem("games") || "[]");
+            game.push({user: user, score: score, date: date});
+
+            localStorage.setItem("games", JSON.stringify(game));
+                        
+
+            // // store user name in localStorage
+            // namePull = JSON.parse(localStorage.getItem("name") || "[]");
+            // namePull.push(userName);
+            // localStorage.setItem("name", JSON.stringify(namePull));
+
+            // // store user score in localStorage
+            // scorePull = JSON.parse(localStorage.getItem("score") || "[]");
+            // scorePull.push(userScore);
+            // localStorage.setItem("score", JSON.stringify(scorePull));
+
+            // // store date and time in localStorage
+            // var currentDate = moment().format('L LT');
+            // datePull = JSON.parse(localStorage.getItem("date") || "[]");
+            // datePull.push(currentDate);
+            // localStorage.setItem("date", JSON.stringify(datePull));
 
             gameSectionDiv.fadeOut(150);
             questionAnswerDiv.fadeOut(150);
