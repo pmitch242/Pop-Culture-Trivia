@@ -53,6 +53,37 @@ var questionSelectSound = new Howl({
    src: ["./assets/mp3s/swoosh.mp3"]
 })
 
+function sortTable () {
+var score =JSON.parse(localStorage.getItem("score"))
+var name = localStorage.getItem("name")
+var date = JSON.parse(localStorage.getItem("date"))
+var n = JSON.parse(name)
+var players = []
+if (n != null && score != null) {
+   for (var i = 0; i < n.length; i++) {
+// console.log("look",n[i])
+      // =====Varibles=====
+   
+    
+  var obj = {
+     name:n[i],
+     score:score[i],
+     date:date[i]
+  }
+  players.push(obj)    
+   }
+}
+  
+      for (let i = 0; i < players.length; i++) {
+         const p = players[i].score;
+
+      }
+   }
+
+         
+      }
+
+sortTable()
 
 function highScorePage() {
    // store localStorage into arrays
@@ -64,6 +95,8 @@ function highScorePage() {
    nameDisplay = JSON.parse(nameDisplay);
    scoreDisplay = JSON.parse(scoreDisplay);
    dateDisplay = JSON.parse(dateDisplay);
+
+   
 
    if (nameDisplay != null && scoreDisplay != null) {
       for (var i = 0; i < nameDisplay.length; i++) {
@@ -80,15 +113,17 @@ function highScorePage() {
 
          scoreColumn.text(scoreDisplay[i]);
          row.append(scoreColumn);
-
+         
          dateColumn.text(dateDisplay[i]);
          row.append(dateColumn);
 
          scoreTBody.append(row);
-
+       
+         
       }
    }
-
+   
+   
    // Hide clear button when localStorage is empty
    else{
       clearButton.css("display", "none");
@@ -101,6 +136,7 @@ function highScorePage() {
 
 
 }
+   
 
 // starting Oage function
 function startingPage() {
