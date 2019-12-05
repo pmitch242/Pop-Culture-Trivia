@@ -5,7 +5,7 @@ $(document).ready(function () {
    var difficulty = "";
    var possiblePoints = 0;
    var userScore = 0;
-   var gameTime = 10;
+   var gameTime = 150;
    var correctAnswer = "";
    var userName;
 
