@@ -63,9 +63,11 @@ $(document).ready(function () {
 
       //function to sort scores in descending
       function orderScores() {
-         gameDisplay.sort(function (a, b) {
-            return parseInt(b.score) - parseInt(a.score);
-         });
+         if (gameDisplay != null) {
+            gameDisplay.sort(function (a, b) {
+               return parseInt(b.score) - parseInt(a.score);
+            });
+         }
       }
 
       orderScores();
